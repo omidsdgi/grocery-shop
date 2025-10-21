@@ -4,7 +4,7 @@ export default function Page() {
   return (
       <>
       <h1>Welcome to Grocery shop</h1>
-  <Button> Add</Button>
+  <Button variant="destructive"> Add</Button>
       </>
   );
 }
