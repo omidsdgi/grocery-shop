@@ -2,8 +2,8 @@ import "@/app/_styles/globals.css"
 import "@/app/_styles/icon.css"
 import {ReactNode} from "react";
 import {Metadata} from "next";
-import Navigation from "@/app/_components/Navigation";
 import Header from "@/app/_components/layouts/header/Header";
+import Navigation from "@/app/_components/Navigation";
 
 export const metadata:Metadata = {
     title: {
@@ -20,7 +20,7 @@ export default function RootLayout({children}: Props) {
         <html lang="en">
         <body >
         <header>
-            <Header/>
+          <Header/>
             <Navigation/>
         </header>
         <main> {children}</main>
