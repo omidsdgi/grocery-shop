@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "@/app/_components/common/ui/logo/Logo";
 import SearchForm from "@/app/_components/layouts/header/search-form/SearchForm";
+import HeaderIcons, {HeaderIconsResponsive} from "@/app/_components/layouts/header/header-icons/HeaderIcons";
 
 export default function Header() {
     return (
@@ -8,20 +9,21 @@ export default function Header() {
             <div className="container flex items-center justify-between py-4 md:py-6 xl:py-8">
                 <Logo/>
                 <SearchForm/>
-                <ul className="hidden lg:flex gap-5">
-                    <li className="flex gap-2 cursor-pointer">
-                        <Link href="#"><i className="icon-user text-[24px]"></i></Link>
-                        <div className="hidden xl:inline-block text-medium text-gray-500 font-lato">Account</div>
-                    </li>
-                    <li className="flex gap-2 cursor-pointer">
-                        <div className="relative">
-                            <span
-                                className="absolute -top-[10px] -right-[10px] w-[20px] h-[20px] bg-green-200 rounded-full flex justify-center items-center text-white text-xsmall">4</span>
-                            <Link href="#"><i className="icon-shopping-cart text-[24px]"></i></Link>
-                        </div>
-                        <div className="hidden xl:inline-block text-medium text-gray-500 font-lato">Card</div>
-                    </li>
-                </ul>
+                <HeaderIcons/>
+                {/*<ul className="hidden lg:flex gap-5">*/}
+                {/*    <li className="flex gap-2 cursor-pointer">*/}
+                {/*        <Link href="#"><i className="icon-user text-[24px]"></i></Link>*/}
+                {/*        <div className="hidden xl:inline-block text-medium text-gray-500 font-lato">Account</div>*/}
+                {/*    </li>*/}
+                {/*    <li className="flex gap-2 cursor-pointer">*/}
+                {/*        <div className="relative">*/}
+                {/*            <span*/}
+                {/*                className="absolute -top-[10px] -right-[10px] w-[20px] h-[20px] bg-green-200 rounded-full flex justify-center items-center text-white text-xsmall">4</span>*/}
+                {/*            <Link href="#"><i className="icon-shopping-cart text-[24px]"></i></Link>*/}
+                {/*        </div>*/}
+                {/*        <div className="hidden xl:inline-block text-medium text-gray-500 font-lato">Card</div>*/}
+                {/*    </li>*/}
+                {/*</ul>*/}
                 <button id="menu_btn" className="flex flex-col justify-between py-[4px] lg:hidden w-[24px] h-[24px]">
                     <span className="w-full h-[1.5px] bg-black inline-block rounded"></span>
                     <span className="w-full h-[1.5px] bg-black inline-block rounded"></span>
@@ -167,20 +169,22 @@ export default function Header() {
                             <button type="submit"><i className="icon-search text-[16px]"></i></button>
                         </form>
                     </div>
-                    <ul className="flex gap-5">
-                        <li className="flex gap-2 cursor-pointer">
-                           <Link href="#"><i className="icon-user text-[24px]"></i></Link>
-                            <div className="hidden xl:inline-block text-medium text-gray-500 font-lato">Account</div>
-                        </li>
-                        <li className="flex gap-2 cursor-pointer">
-                            <div className="relative">
-                                <span
-                                    className="absolute -top-[10px] -right-[10px] w-[20px] h-[20px] bg-green-200 rounded-full flex justify-center items-center text-white text-xsmall">4</span>
-                               <Link href="#"><i className="icon-shopping-cart text-[24px]"></i></Link>
-                            </div>
-                            <div className="hidden xl:inline-block text-medium text-gray-500 font-lato">Card</div>
-                        </li>
-                    </ul>
+                    <HeaderIconsResponsive/>
+                    {/*<ul className="flex gap-5">*/}
+                    {/*    <li className="flex gap-2 cursor-pointer">*/}
+                    {/*       <Link href="#"><i className="icon-user text-[24px]"></i></Link>*/}
+                    {/*        <div className="hidden xl:inline-block text-medium text-gray-500 font-lato">Account</div>*/}
+                    {/*    </li>*/}
+                    {/*    <li className="flex gap-2 cursor-pointer">*/}
+                    {/*        <div className="relative">*/}
+                    {/*            <span*/}
+                    {/*                className="absolute -top-[10px] -right-[10px] w-[20px] h-[20px] bg-green-200 rounded-full flex justify-center items-center text-white text-xsmall">4</span>*/}
+                    {/*           <Link href="#"><i className="icon-shopping-cart text-[24px]"></i></Link>*/}
+                    {/*        </div>*/}
+                    {/*        <div className="hidden xl:inline-block text-medium text-gray-500 font-lato">Card</div>*/}
+                    {/*    </li>*/}
+                    {/*</ul>*/}
+
                 </div>
             </div>
         </header>
