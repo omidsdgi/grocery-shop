@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {ImageView} from "@/app/_components";
+import {ImageView} from "@/app/_components/common/image-view/ImageView";
 
 export default function Logo() {
     return (

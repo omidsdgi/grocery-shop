@@ -3,7 +3,7 @@ import "@/app/_styles/icon.css"
 import {ReactNode} from "react";
 import {Metadata} from "next";
 import Header from "@/app/_components/layouts/header/Header";
-import Navigation from "@/app/_components/Navigation";
+import Navigation from "@/app/_components/layouts/navigation/Navigation";
 
 export const metadata:Metadata = {
     title: {
