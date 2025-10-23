@@ -1,19 +1,13 @@
 import Link from "next/link";
 import Logo from "@/app/_components/common/ui/logo/Logo";
+import SearchForm from "@/app/_components/layouts/header/search-form/SearchForm";
 
 export default function Header() {
     return (
         <header className="mb-[33px]">
             <div className="container flex items-center justify-between py-4 md:py-6 xl:py-8">
                 <Logo/>
-                <div
-                    className="border-2 border-green-150 rounded-[5px] max-w-[700px] w-full mx-[15px] px-[15px] hidden lg:inline-block">
-                    <form name="search-form" action="#" method="post" className="flex items-center">
-                        <input type="text" name="search_text" placeholder="Search for items"
-                               className="text-xsmall text-gray-400 border-gray-300 w-full py-[15px] focus:outline-none"/>
-                        <button type="submit"><i className="icon-search text-[22px]"></i></button>
-                    </form>
-                </div>
+                <SearchForm/>
                 <ul className="hidden lg:flex gap-5">
                     <li className="flex gap-2 cursor-pointer">
                         <Link href="#"><i className="icon-user text-[24px]"></i></Link>
