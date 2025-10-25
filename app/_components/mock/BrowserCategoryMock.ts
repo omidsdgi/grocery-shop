@@ -1,11 +1,5 @@
-interface Categories  {
-    icon: string,
-    pathCount: number,
-    title: string,
-    href: string
-}
 
-export const categories:Categories[] = [
+export const categoriesMock = [
     {
         icon: 'icon-groceries-1',
         pathCount: 7,
