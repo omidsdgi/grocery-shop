@@ -4,6 +4,7 @@ import {ReactNode} from "react";
 import {Metadata} from "next";
 import Header from "@/app/_components/layouts/header/Header";
 import Navigation from "@/app/_components/layouts/navigation/Navigation";
+import Footer from "@/app/_components/layouts/footer/Footer";
 
 export const metadata:Metadata = {
     title: {
@@ -24,7 +25,7 @@ export default function RootLayout({children}: Props) {
             <Navigation/>
         </header>
         <main> {children}</main>
-        <footer>Omid</footer>
+       <Footer/>
         </body>
         </html>
     )
