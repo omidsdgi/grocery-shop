@@ -1,11 +1,11 @@
 import {CategoryCard} from "@/app/_components/layouts/header/menu/categories-icon/CategoryCard";
-import {categories} from "@/app/_components/mock/BrowserCategory";
+import {categoriesMock} from "@/app/_components/mock/BrowserCategoryMock";
 
 export default function CategoriesIcon() {
 
     return (
         <div className="flex flex-wrap gap-4">
-            {categories.map((category,index) => (
+            {categoriesMock.map((category,index) => (
                 <CategoryCard
                     key={index}
                     icon={category.icon}
