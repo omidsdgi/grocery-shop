@@ -18,7 +18,7 @@ const config: Config = {
         'c-lg': '14px 14px 36px 0px rgba(85, 85, 85, 0.22)'
       },
       backgroundImage: {
-        'hero-pattern': "url('../../images/banner_bg.png')",
+        'hero-pattern': "url('/images/banner_bg.png')",
         'hero-img': "url('../../images/hero-img.png')"
       },
       fontFamily: {
