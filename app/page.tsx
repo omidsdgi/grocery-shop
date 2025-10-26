@@ -1,7 +1,9 @@
+import Section from "@/app/_components/layouts/section/Section";
+
 export default function Page() {
   return (
       <>
-      <h1>Welcome to Grocery shop</h1>
+      <Section>Welcome to Grocery shop</Section>
       </>
   );
 }
