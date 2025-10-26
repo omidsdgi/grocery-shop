@@ -5,6 +5,13 @@ import {Metadata} from "next";
 import Header from "@/app/_components/layouts/header/Header";
 import Navigation from "@/app/_components/layouts/navigation/Navigation";
 import Footer from "@/app/_components/layouts/footer/Footer";
+import {Quicksand} from "next/font/google";
+
+const quicksand=Quicksand({
+    subsets:['latin'],
+    display:"swap"
+})
+
 
 export const metadata:Metadata = {
     title: {
@@ -19,7 +26,7 @@ interface Props {
 export default function RootLayout({children}: Props) {
     return (
         <html lang="en">
-        <body >
+        <body className={quicksand.className}  >
         <header>
           <Header/>
             <Navigation/>
