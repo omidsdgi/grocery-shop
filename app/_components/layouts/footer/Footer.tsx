@@ -1,6 +1,6 @@
 import {ImageView} from "@/app/_components/common/image-view/ImageView";
 import Link from "next/link";
-import Logo from "@/app/_components/common/ui/logo/Logo";
+import Logo from "@/app/_components/common/ui/Logo";
 
 export default function Footer() {
     return (
