@@ -7,7 +7,6 @@ import Navigation from "@/app/_components/layouts/navigation/Navigation";
 import Footer from "@/app/_components/layouts/footer/Footer";
 import {Quicksand} from "next/font/google";
 import localfont from "next/font/local"
-import Banner from "@/app/_components/common/ui/Banner";
 
 const quicksand=Quicksand({
     subsets:['latin'],
@@ -50,9 +49,8 @@ export default function RootLayout({children}: Props) {
         <header>
             <Header/>
             <Navigation/>
-            <Banner/>
         </header>
-        <main> {children}</main>
+        <main>{children}</main>
         <Footer/>
         </body>
         </html>
