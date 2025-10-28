@@ -5,7 +5,10 @@ export default function Page() {
   return (
       <>
       <Section>
-          <Banner />
+          <Banner title={"Don&apost;t miss amazing  grocery deals"}
+                  subtitle={"Sign up for the daily newsletter"}
+                  bgImg={'/images/banner_bg.png'}
+                  image={'/images/fresh-apples.png'} />
       </Section>
       </>
   );
