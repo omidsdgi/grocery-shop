@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Logo from "@/app/_components/common/ui/logo/Logo";
+import Logo from "@/app/_components/common/ui/Logo";
 import SearchForm from "@/app/_components/layouts/header/search-form/SearchForm";
 import HeaderIcons, {HeaderIconsResponsive} from "@/app/_components/layouts/header/header-icons/HeaderIcons";
 import MenuList from "@/app/_components/layouts/header/menu/MenuList";
