@@ -1,5 +1,6 @@
 import Section from "@/app/_components/layouts/section/Section";
 import Banner from "@/app/_components/common/ui/Banner";
+import FeaturedCategories from "@/app/_components/pages/FeaturedCategories";
 
 export default function Page() {
   return (
@@ -10,6 +11,9 @@ export default function Page() {
                   bgImage={'/images/banner_bg.png'}
                   image={'/images/fresh-apples.png'} />
       </Section>
+          <Section>
+              <FeaturedCategories/>
+          </Section>
       </>
   );
 }
