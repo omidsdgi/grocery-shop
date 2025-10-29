@@ -1,5 +1,7 @@
 import "@/app/_styles/globals.css"
 import "@/app/_styles/icon.css"
+import  "swiper/css"
+import  "swiper/css/autoplay"
 import {ReactNode} from "react";
 import {Metadata} from "next";
 import Header from "@/app/_components/layouts/header/Header";
