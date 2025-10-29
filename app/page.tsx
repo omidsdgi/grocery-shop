@@ -7,7 +7,7 @@ export default function Page() {
       <Section>
           <Banner title={"Don&apost;t miss amazing  grocery deals"}
                   subtitle={"Sign up for the daily newsletter"}
-                  bgImg={'/images/banner_bg.png'}
+                  bgImage={'/images/banner_bg.png'}
                   image={'/images/fresh-apples.png'} />
       </Section>
       </>
