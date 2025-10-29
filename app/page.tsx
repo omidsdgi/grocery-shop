@@ -1,6 +1,7 @@
 import Section from "@/app/_components/layouts/section/Section";
 import Banner from "@/app/_components/common/ui/Banner";
 import FeaturedCategories from "@/app/_components/pages/FeaturedCategories";
+import MiniProductSlider from "@/app/_components/pages/MiniProductSlider";
 
 export default function Page() {
   return (
@@ -13,6 +14,9 @@ export default function Page() {
       </Section>
           <Section>
               <FeaturedCategories/>
+          </Section>
+          <Section>
+              <MiniProductSlider/>
           </Section>
       </>
   );
