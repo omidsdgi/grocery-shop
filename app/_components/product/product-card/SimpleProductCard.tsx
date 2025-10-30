@@ -1,6 +1,7 @@
 import {ImageView} from "@/app/_components/common/image-view/ImageView";
 import {ChevronDown, ChevronUp, Eye, Heart, Shuffle} from "lucide-react";
 import Link from "next/link";
+import Rating from "@/app/_components/common/ui/Rating";
 
 interface Props {
     data:{
@@ -46,14 +47,8 @@ export default function SimpleProductCard({data}:Props)
                                 <div className="text-gray-500 text-xsmall">{data.category}</div>
                                 <Link href={'#'}><h3 className="text-heading-sm text-blue-300 max-h-[50px] overflow-hidden">{data.title}</h3></Link>
                                 <div className="flex gap-4">
-                                    <ul className="flex gap-1">
-                                        <li className="flex"><i className="icon-star-full text-[12px]"></i></li>
-                                        <li className="flex"><i className="icon-star-full text-[12px]"></i></li>
-                                        <li className="flex"><i className="icon-star-full text-[12px]"></i></li>
-                                        <li className="flex"><i className="icon-star-full text-[12px]"></i></li>
-                                        <li className="flex"><i className="icon-star-empty text-[12px]"></i></li>
-                                    </ul>
-                                    <div className="text-xsmall text-gray-500 font-lato">({data.rate})</div>
+                               <Rating rate={data.rate} key={data.title} />
+
                                 </div>
                                 <div className="font-lato text-xsmall text-gray-500">{data.weight} {data.unit}</div>
                             </div>
