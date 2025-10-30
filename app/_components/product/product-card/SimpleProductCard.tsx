@@ -1,17 +1,23 @@
+import {ImageView} from "@/app/_components/common/image-view/ImageView";
+
 interface Props {
-    data:{}
+    data:{
+        title: string,
+        image: string,
+        category: string,
+        unit:string
+        price: number,
+        sale_price: number,
+        label?: string,
+        rate:number,
+        weight:number,
+    }
 }
 export default function SimpleProductCard({data}:Props)
 {
     return (
         <section className="container mb-[68px]">
-            <div className="flex justify-between mb-[50px]">
-                <h2 className="text-heading3 text-blue-300">Popular Products</h2>
-                <div className="flex items-center gap-3">
-                    <i className="swiper-nav-left icon-angle-small-left cursor-pointer bg-gray-100 p-2 rounded-full text-gray-500 hover:bg-green-200 hover:text-white text-[24px]"></i>
-                    <i className="swiper-nav-right icon-angle-small-right cursor-pointer bg-gray-100 p-2 rounded-full text-gray-500 hover:bg-green-200 hover:text-white text-[24px]"></i>
-                </div>
-            </div>
+
             <div className="swiper products_slider">
                 <div className="swiper-wrapper">
                     <div className="swiper-slide">
@@ -32,7 +38,7 @@ export default function SimpleProductCard({data}:Props)
                                     <i className="icon-eye text-[15px]"></i>
                                 </div>
                             </div>
-                            <img src={data.image}
+                            <ImageView src={data.image} height={24} width={24} alt={data.title}
                                  className="m-auto w-full aspect-[3/2] mb-[28px]"/>
                             <div className="flex flex-col gap-2">
                                 <div className="text-gray-500 text-xsmall">{data.category}</div>
