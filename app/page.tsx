@@ -2,6 +2,9 @@ import Section from "@/app/_components/layouts/section/Section";
 import Banner from "@/app/_components/common/ui/Banner";
 import FeaturedCategories from "@/app/_components/pages/FeaturedCategories";
 import MiniProductSlider from "@/app/_components/pages/MiniProductSlider";
+import SimpleProductSlider from "@/app/_components/product/simple-product-slider/SimpleProductSlider";
+import {popularProducts} from "@/app/_components/mock/papularProducts";
+import {popularFruits} from "@/app/_components/mock/popularFruits";
 
 export default function Page() {
   return (
@@ -17,6 +20,12 @@ export default function Page() {
           </Section>
           <Section>
               <MiniProductSlider/>
+          </Section>
+          <Section>
+              <SimpleProductSlider sliderData={popularProducts}/>
+          </Section>
+          <Section>
+              <SimpleProductSlider sliderData={popularFruits}/>
           </Section>
       </>
   );
