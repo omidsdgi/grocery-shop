@@ -1,7 +1,7 @@
 export const BestSellers =  [
     {
         title:'>Bring nature into your home',
-        image:'/assets/images/bg-leaf.png',
+        image:'/images/bg-leaf.png',
         category:'Hodo Foods',
         rate:'4.0',
         weight:'500',
@@ -14,7 +14,7 @@ export const BestSellers =  [
     },
     {
         title:'All Natural Italian-Style Chicken Meatballs',
-        image:'/assets/images/products/hamburger.png',
+        image:'/images/products/hamburger.png',
         category:'Hodo Foods',
         rate:'4.0',
         weight:'500',
@@ -27,7 +27,7 @@ export const BestSellers =  [
 },
     {
         title:'Angie’s Boomchickapop Sweet & Salty Kettle Corn',
-        image:'/assets/images/products/pizza.png',
+        image:'/images/products/pizza.png',
         category:'Hodo Foods',
         rate:'4.0',
         weight:'500',
@@ -40,7 +40,7 @@ export const BestSellers =  [
     },
     {
         title:'Foster Farms Takeout Crispy Classic Buffalo Wings',
-        image:'/assets/images/products/cabbage.png',
+        image:'/images/products/cabbage.png',
         category:'Hodo Foods',
         rate:'4.0',
         weight:'500',
@@ -53,7 +53,7 @@ export const BestSellers =  [
     },
     {
         title:'>Seeds of Change Organic Quinoa, Brown, & Red Rice',
-        image:'/assets/images/products/paper.png',
+        image:'/images/products/paper.png',
         category:'Hodo Foods',
         rate:'4.0',
         weight:'500',
@@ -66,7 +66,7 @@ export const BestSellers =  [
     },
     {
         title:'Seeds of Change Organic Quinoa, Brown, & Red Rice',
-        image:'/assets/images/products/tanjerin.png',
+        image:'/images/products/tanjerin.png',
         category:'Hodo Foods',
         rate:'4.0',
         weight:'500',
@@ -79,7 +79,7 @@ export const BestSellers =  [
     },
     {
         title:'Seeds of Change Organic Quinoa, Brown, & Red Rice',
-        image:'/assets/images/products/cucumber.png',
+        image:'/images/products/cucumber.png',
         category:'Hodo Foods',
         rate:'4.0',
         weight:'500',
