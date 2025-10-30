@@ -2,6 +2,7 @@ import {ImageView} from "@/app/_components/common/image-view/ImageView";
 import {ChevronDown, ChevronUp, Eye, Heart, Shuffle} from "lucide-react";
 import Link from "next/link";
 import Rating from "@/app/_components/common/ui/Rating";
+import Badge from "@/app/_components/common/ui/Badge";
 
 interface Props {
     data:{
@@ -11,7 +12,7 @@ interface Props {
         unit:string
         price: number,
         sale_price: number,
-        label?: string,
+        label: string,
         rate:number,
         weight:number,
     }
@@ -26,9 +27,7 @@ export default function SimpleProductCard({data}:Props)
                     <div className="swiper-slide">
                         <div
                             className="group border-[1px] border-gray-200 hover:border-green-150 rounded-[10px] hover:shadow-[20px_20px_40px_0_rgba(24,24,24,0.07)] relative p-3 md:p-4 xl:px-5 xl:pb-5 lg:pt-[65px] h-full">
-                            <div
-                                className="badge badge--off absolute left-0 top-0 lg:top-5 rounded-tl-[10px] lg:rounded-tl-none">-17%
-                            </div>
+                            <Badge badge={data.label} price={data.price} sale_price={data.sale_price} />
                             <div
                                 className="mt-8 hidden group-hover:flex rounded-[5px] border-[1px] border-green-200 w-max absolute top-[100px] left-[50%] translate-x-[-50%] bg-white productAction cursor-pointer">
                                 <div className="p-2.5 border-r-[1px] border-r-green-200 hover:bg-green-150">
@@ -47,7 +46,7 @@ export default function SimpleProductCard({data}:Props)
                                 <div className="text-gray-500 text-xsmall">{data.category}</div>
                                 <Link href={'#'}><h3 className="text-heading-sm text-blue-300 max-h-[50px] overflow-hidden">{data.title}</h3></Link>
                                 <div className="flex gap-4">
-                               <Rating rate={data.rate} key={data.title} />
+                                    <Rating rate={data.rate} key={data.title} />
 
                                 </div>
                                 <div className="font-lato text-xsmall text-gray-500">{data.weight} {data.unit}</div>
