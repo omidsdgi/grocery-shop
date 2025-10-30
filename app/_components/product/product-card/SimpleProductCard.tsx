@@ -1,4 +1,6 @@
 import {ImageView} from "@/app/_components/common/image-view/ImageView";
+import {ChevronDown, ChevronUp, Eye, Heart, Shuffle} from "lucide-react";
+import Link from "next/link";
 
 interface Props {
     data:{
@@ -29,20 +31,20 @@ export default function SimpleProductCard({data}:Props)
                             <div
                                 className="mt-8 hidden group-hover:flex rounded-[5px] border-[1px] border-green-200 w-max absolute top-[100px] left-[50%] translate-x-[-50%] bg-white productAction cursor-pointer">
                                 <div className="p-2.5 border-r-[1px] border-r-green-200 hover:bg-green-150">
-                                    <i className="icon-heart text-[15px] text-brand1"></i>
+                                    <Heart className="w-[15px] h-[15px] text-gray-500" />
                                 </div>
                                 <div className="p-2.5 border-r-[1px] border-r-green-200 hover:bg-green-150">
-                                    <i className="icon-shuffle text-[15px]"></i>
+                                    <Shuffle className="w-[15px] h-[15px] text-gray-500" />
                                 </div>
                                 <div className="p-2.5 hover:bg-green-150">
-                                    <i className="icon-eye text-[15px]"></i>
+                                    <Eye className="w-[15px] h-[15px] text-gray-500"/>
                                 </div>
                             </div>
-                            <ImageView src={data.image} height={24} width={24} alt={data.title}
-                                 className="m-auto w-full aspect-[3/2] mb-[28px]"/>
+                            <ImageView src={data.image} height={168} width={210} alt={data.title}
+                                       className="m-auto w-full aspect-[3/2] mb-[28px]"/>
                             <div className="flex flex-col gap-2">
                                 <div className="text-gray-500 text-xsmall">{data.category}</div>
-                                <h3 className="text-heading-sm text-blue-300 max-h-[50px] overflow-hidden">{data.title}</h3>
+                                <Link href={'#'}><h3 className="text-heading-sm text-blue-300 max-h-[50px] overflow-hidden">{data.title}</h3></Link>
                                 <div className="flex gap-4">
                                     <ul className="flex gap-1">
                                         <li className="flex"><i className="icon-star-full text-[12px]"></i></li>
@@ -70,8 +72,8 @@ export default function SimpleProductCard({data}:Props)
                                         <input type="number" value="1"
                                                className="input-product h-[24px] w-[50px] border-0 focus:outline-none text-center"/>
                                         <div className="flex flex-col justify-between">
-                                            <i className="up icon-angle-small-up text-[10px]"></i>
-                                            <i className="down icon-angle-small-down text-[10px]"></i>
+                                            <ChevronUp className="w-[10px] h-[10px] text-gray-500" />
+                                            <ChevronDown className="w-[10px] h-[10px] text-gray-500" />
                                         </div>
                                     </div>
                                 </div>
