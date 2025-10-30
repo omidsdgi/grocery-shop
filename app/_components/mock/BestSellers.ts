@@ -23,7 +23,7 @@ export const BestSellers =  [
         price:'500',
         sale_price:'200',
         lable:'Hot',
-        sold:100,
+        sold:10,
         total:120,
     },
     {
