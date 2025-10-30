@@ -1,17 +1,5 @@
 export const BestSellers =  [
-    {
-        title:'>Bring nature into your home',
-        image:'/images/bg-leaf.png',
-        category:'Hodo Foods',
-        rate:'4.0',
-        weight:'500',
-        unit:'gram',
-        price:'1500',
-        sale_price:'1200',
-        lable:'Hot',
-        sold:90,
-        total:120,
-    },
+
     {
         title:'All Natural Italian-Style Chicken Meatballs',
         image:'/images/products/hamburger.png',
@@ -49,7 +37,7 @@ export const BestSellers =  [
         sale_price:'1200',
         lable:'Hot',
         sold:90,
-        total:120,
+        total:130,
     },
     {
         title:'>Seeds of Change Organic Quinoa, Brown, & Red Rice',
@@ -61,8 +49,8 @@ export const BestSellers =  [
         price:'1500',
         sale_price:'1200',
         lable:'Hot',
-        sold:90,
-        total:120,
+        sold:70,
+        total:115,
     },
     {
         title:'Seeds of Change Organic Quinoa, Brown, & Red Rice',
@@ -88,6 +76,6 @@ export const BestSellers =  [
 
         lable:'Hot',
         sold:888,
-        total:8888,
+        total:950,
     }
 ]

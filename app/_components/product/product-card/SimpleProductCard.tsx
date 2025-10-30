@@ -15,6 +15,8 @@ interface Props {
         label: string,
         rate:number,
         weight:number,
+        sold?:number,
+        total?:number,
     }
 }
 export default function SimpleProductCard({data}:Props)
@@ -51,30 +53,44 @@ export default function SimpleProductCard({data}:Props)
                                 </div>
                                 <div className="font-lato text-xsmall text-gray-500">{data.weight} {data.unit}</div>
                             </div>
-                            <div className="flex items-center justify-between mt-3">
-                                <div>
-                                    <span className="text-heading5 text-green-200">${data.sale_price}</span>
-                                    <span className="text-heading-sm line-through text-gray-500">${data.price}</span>
-                                </div>
-                                <div className="add-product">
-                                    <button
-                                        className="flex items-center justify-center text-heading-sm text-green-200 border-[1px] rounded-[4px] bg-green-150 px-[10px] py-[5px]">Adds
-                                        +
-                                    </button>
-                                    <div
-                                        className="input-product__container hidden border-[1px] rounded-[4px] border-green-300 text-green-300 h-[30px] p-[3px]">
-                                        <input type="number" defaultValue="1"
-                                               className="input-product h-[24px] w-[50px] border-0 focus:outline-none text-center"/>
-                                        <div className="flex flex-col justify-between">
-                                            <ChevronUp className="w-[10px] h-[10px] text-gray-500" />
-                                            <ChevronDown className="w-[10px] h-[10px] text-gray-500" />
+                            {
+                                data.total ?
+                                    <>
+                                        <div className="mt-[15px] bg-gray-200 h-[4px] w-full rounded-[2px]">
+                                            <div className="bg-green-200 h-[4px] w-3/4 rounded-[2px]"></div>
                                         </div>
-                                    </div>
+                                    <div className="mt-2.5 font-lato text-blue-300 text-xsmall">Sold: {data.sold}/{data.total}</div>
+                                <div className="mt-[23px]">
+                                <button className="flex justify-center items-center gap-2 xl:text-heading-sm text-white border-[1px] w-full rounded-[4px] bg-green-200 hover:bg-yellow-100 px-2 py-2 lg:py-[14px]">
+                                <i className="icon-shopping-cart text-[22px]"></i>
+                                <span className="text-heading-sm">Add To Card</span>
+                                </button>
                                 </div>
+                                    </>:
+                                <div className="flex items-center justify-between mt-3">
+                                <div>
+                                <span className="text-heading5 text-green-200">${data.sale_price}</span>
+                        <span className="text-heading-sm line-through text-gray-500">${data.price}</span>
+                    </div>
+                    <div className="add-product">
+                        <button
+                            className="flex items-center justify-center text-heading-sm text-green-200 border-[1px] rounded-[4px] bg-green-150 px-[10px] py-[5px]">Adds
+                            +
+                        </button>
+                        <div
+                            className="input-product__container hidden border-[1px] rounded-[4px] border-green-300 text-green-300 h-[30px] p-[3px]">
+                            <input type="number" defaultValue="1"
+                                   className="input-product h-[24px] w-[50px] border-0 focus:outline-none text-center"/>
+                            <div className="flex flex-col justify-between">
+                                <ChevronUp className="w-[10px] h-[10px] text-gray-500" />
+                                <ChevronDown className="w-[10px] h-[10px] text-gray-500" />
                             </div>
                         </div>
                     </div>
-
+                </div>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
