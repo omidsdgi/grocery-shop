@@ -67,7 +67,7 @@ export default function Page() {
                   </div>
           </Section>
           <Section>
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center mb-[50px]">
                   <h2 className="text-heading6 md:text-heading5 lg:text-heading4 xl:text-heading3 text-blue-300">Deals
                       Of The Days</h2>
                   <Link className="flex items-center" href="#">All Deals <i></i><ChevronRight className="w-5 h-5" /></Link>

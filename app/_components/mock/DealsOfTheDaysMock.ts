@@ -1,7 +1,7 @@
 export const DealsOfTheDaysMock=[
         {
                 title:'Seeds of Change Organic Quinoa, Brown, & Red Rice',
-                image:'/assets/images/deals/lettuce.png',
+                image:'/images/deals/lettuce.png',
                 category:'Hodo Foods',
                 rate:'4.0',
                 weight:'500',
@@ -15,7 +15,7 @@ export const DealsOfTheDaysMock=[
         },
         {
                 title:'Seeds of Change Organic Quinoa, Brown, & Red Rice',
-                image:'/assets/images/deals/blood-orange.png',
+                image:'/images/deals/blood-orange.png',
                 category:'Hodo Foods',
                 rate:'4.0',
                 weight:'500',
@@ -28,7 +28,7 @@ export const DealsOfTheDaysMock=[
         },
         {
                 title:'Seeds of Change Organic Quinoa, Brown, & Red Rice',
-                image:'/assets/images/deals/beans.png',
+                image:'/images/deals/beans.png',
                 category:'Hodo Foods',
                 rate:'4.0',
                 weight:'500',
@@ -41,7 +41,7 @@ export const DealsOfTheDaysMock=[
         },
         {
                 title:'Seeds of Change Organic Quinoa, Brown, & Red Rice',
-                image:'/assets/images/deals/orange.png',
+                image:'/images/deals/orange.png',
                 category:'Hodo Foods',
                 rate:'4.0',
                 weight:'500',
@@ -54,7 +54,7 @@ export const DealsOfTheDaysMock=[
         },
         {
                 title:'Seeds of Change Organic Quinoa, Brown, & Red Rice',
-                image:'/assets/images/deals/lettuce.png',
+                image:'/images/deals/lettuce.png',
                 category:'Hodo Foods',
                 rate:'4.0',
                 weight:'500',
