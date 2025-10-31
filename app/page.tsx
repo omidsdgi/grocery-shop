@@ -8,6 +8,9 @@ import {popularProducts} from "@/app/_components/mock/papularProducts";
 import {popularFruits} from "@/app/_components/mock/popularFruits";
 import {BestSellers} from "@/app/_components/mock/BestSellers";
 import {ChevronLeft, ChevronRight} from "lucide-react";
+import DealsOfTheDaysSlider from "@/app/_components/pages/DealsOfTheDaysSlider";
+import {DealsOfTheDaysMock} from "@/app/_components/mock/DealsOfTheDaysMock";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -63,6 +66,14 @@ export default function Page() {
                       <BestSellerSlider sliderData={BestSellers}/>
                   </div>
           </Section>
+          <Section>
+              <div className="flex justify-between items-center">
+                  <h2 className="text-heading6 md:text-heading5 lg:text-heading4 xl:text-heading3 text-blue-300">Deals
+                      Of The Days</h2>
+                  <Link className="flex items-center" href="#">All Deals <i></i><ChevronRight className="w-5 h-5" /></Link>
+              </div>
+              <DealsOfTheDaysSlider sliderData={DealsOfTheDaysMock}/>
+          </Section>
       </>
-);
+  );
 }
