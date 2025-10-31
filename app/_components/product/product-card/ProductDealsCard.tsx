@@ -1,8 +1,11 @@
+"use client"
 import {ImageView} from "@/app/_components/common/image-view/ImageView";
 import Rating from "@/app/_components/common/ui/Rating";
+import {useEffect, useState} from "react";
+import {timerHelper} from "@/utils/Timer";
 
 interface Props {
-    sliderData: {
+   data: {
         title: string;
         image: string;
         category: string;
@@ -16,25 +19,42 @@ interface Props {
     }
 }
 export default function ProductDealsCard({data}:Props) {
+    const [remainTime, setRemainTime] = useState({
+        days:0,
+        hours:0,
+        minutes:0,
+        seconds:0
+    })
+
+    useEffect(()=> {
+        const interval=setInterval(() => {
+            const timerObj = timerHelper(data.dead_line);
+            setRemainTime(timerObj)
+        }, 1000)
+        return () => {
+            clearInterval(interval);
+        }
+    },[data.dead_line])
+
     return (
         <div className="relative h-[438px]">
             <ImageView src={data.image} alt={'product'} width={378} height={335} className="w-full"/>
             <div className="absolute z-[20] left-[50%] translate-x-[-50%] top-[195px]">
                 <div className="timer1 flex items-center gap-3 h-[60px]">
                     <div className="bg-white rounded-[6px] h-full aspect-square text-center">
-                        <div className="day text-green-200 font-bold text-[28px] leading-[38px]">05</div>
+                        <div className="day text-green-200 font-bold text-[28px] leading-[38px]">{remainTime.days}</div>
                         <div className="font-lato text-gray-500 text-small">days</div>
                     </div>
                     <div className="bg-white rounded-[6px] h-full aspect-square text-center">
-                        <div className="hour text-green-200 font-bold text-[28px] leading-[38px]">06</div>
+                        <div className="hour text-green-200 font-bold text-[28px] leading-[38px]">{remainTime.hours}</div>
                         <div className="font-lato text-gray-500 text-small">Hours</div>
                     </div>
                     <div className="bg-white rounded-[6px] h-full aspect-square text-center">
-                        <div className="minute text-green-200 font-bold text-[28px] leading-[38px]">56</div>
+                        <div className="minute text-green-200 font-bold text-[28px] leading-[38px]">{remainTime.minutes}</div>
                         <div className="font-lato text-gray-500 text-small">Mins</div>
                     </div>
                     <div className="bg-white rounded-[6px] h-full aspect-square text-center">
-                        <div className="second text-green-200 font-bold text-[28px] leading-[38px]">18</div>
+                        <div className="second text-green-200 font-bold text-[28px] leading-[38px]">{remainTime.seconds}</div>
                         <div className="font-lato text-gray-500 text-small">Secs</div>
                     </div>
                 </div>
@@ -67,7 +87,7 @@ export default function ProductDealsCard({data}:Props) {
                             </button>
                             <div
                                 className="input-product__container hidden border-[1px] rounded-[4px] border-green-300 text-green-300 h-[30px] p-[3px]">
-                                <input type="number" value="1"
+                                <input type="number" defaultValue="1"
                                        className="input-product h-[24px] w-[50px] border-0 focus:outline-none text-center"/>
                                 <div className="flex flex-col justify-between">
                                     <i className="up icon-angle-small-up text-[10px]"></i>

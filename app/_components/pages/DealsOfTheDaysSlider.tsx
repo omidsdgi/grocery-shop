@@ -4,7 +4,7 @@ import {Autoplay} from "swiper/modules";
 import ProductDealsCard from "@/app/_components/product/product-card/ProductDealsCard";
 
 interface Props{
-    sliderData:[]
+    sliderData:Array<ProductDealsCard>;
 }
 export default function DealsOfTheDaysSlider({sliderData}:Props) {
        return (
