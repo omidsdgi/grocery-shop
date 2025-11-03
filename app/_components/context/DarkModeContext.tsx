@@ -1,4 +1,5 @@
-import React, {createContext, useContext} from "react";
+"use client"
+import React, {createContext, useContext, useEffect} from "react";
 import {useLocalStorageState} from "@/app/_components/hook/UseLocalStorageState";
 interface Props {
     children: React.ReactNode;
@@ -12,6 +13,11 @@ const DarkModeContext=createContext<DarkModeContextType|undefined>(undefined);
 
 function DarkModeProvider({children}:Props) {
     const [isDarkMode, setIsDarkMode] = useLocalStorageState(false,"isDarkMode")
+useEffect(() => {
+  const root=document.documentElement;
+  root.classList.toggle("dark-mode",isDarkMode);
+  root.classList.toggle("light-mode",!isDarkMode);
+},[isDarkMode]);
 
     function toggleDarkMode(){
         setIsDarkMode((prev:boolean)=>!prev);
