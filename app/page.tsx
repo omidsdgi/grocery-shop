@@ -11,6 +11,7 @@ import {ChevronLeft, ChevronRight} from "lucide-react";
 import DealsOfTheDaysSlider from "@/app/_components/pages/DealsOfTheDaysSlider";
 import {DealsOfTheDaysMock} from "@/app/_components/mock/DealsOfTheDaysMock";
 import Link from "next/link";
+import BottomSlider from "@/app/_components/pages/BottomSlider";
 
 export default function Page() {
   return (
@@ -73,6 +74,10 @@ export default function Page() {
                   <Link className="flex items-center" href="#">All Deals <i></i><ChevronRight className="w-5 h-5" /></Link>
               </div>
               <DealsOfTheDaysSlider sliderData={DealsOfTheDaysMock}/>
+          </Section>
+
+          <Section>
+              <BottomSlider/>
           </Section>
       </>
   );

@@ -1,11 +1,11 @@
 "use client"
-import {miniProductSlider} from "@/app/_components/mock/miniProductSlider";
 import Link from "next/link";
 import {ArrowRight} from "lucide-react";
 import {Swiper,SwiperSlide} from "swiper/react";
 import {Autoplay} from "swiper/modules";
+import {miniProductSlider} from "@/app/_components/mock/miniProductSlider";
 
-export default function MiniProductSlider() {
+export default function MiniProductSlider({}) {
     return (
         <Swiper
             spaceBetween={20}
@@ -25,7 +25,6 @@ export default function MiniProductSlider() {
                 }
             }
         >
-
             {miniProductSlider.map((item,index)=>{
                 return (
                     <SwiperSlide key={index}>

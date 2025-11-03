@@ -1,21 +1,21 @@
-export const trendingProductsMock=[
+export const TrendingProductsMock=[
     {
         title:'Nestle Original Coffee-Mate Coffee Creamer',
-        image:'/assets/images/products/pomegranate.png',
+        image:'/images/products/pomegranate.png',
         rate:4,
         price:1999,
         sale_price:298,
     },
     {
         title:'Nestle Original Coffee-Mate Coffee Creamer',
-        image:'/assets/images/products/mango-juice.png',
+        image:'/images/products/mango-juice.png',
         rate:4,
         price:1999,
         sale_price:298,
     },
     {
         title:'Nestle Original Coffee-Mate Coffee Creamer',
-        image:'/assets/images/products/watter-melon.png',
+        image:'/images/products/watter-melon.png',
         rate:4,
         price:1999,
         sale_price:298,
