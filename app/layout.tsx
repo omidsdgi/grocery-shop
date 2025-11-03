@@ -12,6 +12,7 @@ import Navigation from "@/app/_components/layouts/navigation/Navigation";
 import Footer from "@/app/_components/layouts/footer/Footer";
 import {Quicksand} from "next/font/google";
 import localfont from "next/font/local"
+import {DarkModeProvider} from "@/app/_components/context/DarkModeContext";
 
 const quicksand=Quicksand({
     subsets:['latin'],
@@ -49,7 +50,8 @@ interface Props {
 }
 export default function RootLayout({children}: Props) {
     return (
-        <html lang="en" >
+        <html lang="en" className="dark-mode">
+        <DarkModeProvider>
         <body className={`${quicksand.className},${lato.className}`}  >
         <header>
             <Header/>
@@ -58,6 +60,7 @@ export default function RootLayout({children}: Props) {
         <main>{children}</main>
         <Footer/>
         </body>
+        </DarkModeProvider>
         </html>
     )
 }
