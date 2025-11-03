@@ -1,4 +1,5 @@
 import { User, ShoppingCart } from "lucide-react";
+import DarkModeToggle from "@/app/_components/common/ui/DarkModeToggle";
 
 export default function HeaderIcons() {
     return (
@@ -8,6 +9,9 @@ export default function HeaderIcons() {
                     <User className="h-6 w-6"/>
                 </a>
                 <div className="hidden xl:inline-block text-sm text-gray-500 font-lato">Account</div>
+            </li>
+            <li>
+                <DarkModeToggle/>
             </li>
             <li className="flex gap-2 cursor-pointer items-center">
                 <div className="relative">
