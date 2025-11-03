@@ -59,6 +59,9 @@
 
   body {
     position: relative;
+    color: rgb(var(--color-gray-500));
+    background-color: rgb(var(--color-white));
+    transition: color 0.3s, background-color 0.3s;
   }
 }
 @layer components {
