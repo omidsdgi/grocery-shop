@@ -12,7 +12,7 @@ export default function Banner({title, subtitle, image,bgImage }:Banner) {
     return (
         <>
             <div
-                style={{backgroundImage: `url(${bgImage}')`}}  className={`grid grid-cols-2  items-center rounded-lg bg-[#FDC040] bg-opacity-20 bg-cover bg-no-repeat`}>
+                style={{backgroundImage: `url(${bgImage})`}}  className={`grid grid-cols-2  items-center rounded-lg bg-[#FDC040] bg-opacity-20 bg-cover bg-no-repeat`}>
                 <div className="pl-[20px] md:pl-[60px]">
                     <h2 className="text-heading5 sm:text-heading4 lg:text-heading2 xl:text-heading1 2xl:text-display2 text-blue-300 mb-[33px]">{title}</h2>
                     <p className="text-gray-500 mb-[68px] hidden md:inline-block">{subtitle} </p>

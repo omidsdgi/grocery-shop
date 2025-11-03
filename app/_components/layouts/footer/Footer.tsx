@@ -17,8 +17,8 @@ export default function Footer() {
                             Your Daily Sopping with Nest Mart
                         </div>
                     </div>
-                    <ImageView src="/images/Screenshot (76).png" height={331} alt={"banner"} width={587}
-                               className="absolute bottom-0 right-0 sm:h-full h-3/4"/>
+                    {/*<ImageView src="/images/Screenshot (76).png" height={331} alt={"banner"} width={587}*/}
+                    {/*           className="absolute bottom-0 right-0 sm:h-full h-3/4"/>*/}
                 </div>
             </div>
             <div

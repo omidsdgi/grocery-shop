@@ -49,7 +49,7 @@ interface Props {
 }
 export default function RootLayout({children}: Props) {
     return (
-        <html lang="en" className="dark">
+        <html lang="en" >
         <body className={`${quicksand.className},${lato.className}`}  >
         <header>
             <Header/>
