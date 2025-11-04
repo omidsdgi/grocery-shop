@@ -50,17 +50,17 @@ interface Props {
 }
 export default function RootLayout({children}: Props) {
     return (
-        <html lang="en" className="dark-mode">
+        <html lang="en" suppressHydrationWarning>
+        <body className={`${quicksand.className},${lato.className}`} suppressHydrationWarning >
         <DarkModeProvider>
-        <body className={`${quicksand.className},${lato.className}`}  >
         <header>
             <Header/>
             <Navigation/>
         </header>
         <main>{children}</main>
         <Footer/>
-        </body>
         </DarkModeProvider>
+        </body>
         </html>
     )
 }

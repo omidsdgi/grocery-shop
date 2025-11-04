@@ -12,7 +12,7 @@
   }
 
   :root {
-    &.light {
+
       --color-white: 255 255 255;
       --color-red: 239 79 79;
       --color-gray-100: 244 246 250;
@@ -38,7 +38,7 @@
       --image-opacity: 100%;
     }
 
-    &.dark {
+    &.dark-mode {
       --color-white: 26 26 26;
       --color-red: 255 99 99;
       --color-gray-100: 45 45 45;
@@ -63,7 +63,7 @@
       --image-grayscale: 10%;
       --image-opacity: 90%;
     }
-  }
+
   body {
     position: relative;
     color: rgb(var(--color-gray-500));
