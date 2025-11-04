@@ -39,6 +39,9 @@ export  function HeaderIconsResponsive() {
                 </a>
                 <div className="hidden xl:inline-block text-sm text-gray-500 font-lato">Account</div>
             </li>
+            <li>
+                <DarkModeToggle/>
+            </li>
             <li className="flex gap-2 cursor-pointer items-center">
                 <div className="relative">
                   <span
