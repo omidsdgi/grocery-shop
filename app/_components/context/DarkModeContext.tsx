@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import React, {createContext, useContext, useEffect} from "react";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import {useLocalStorageState} from "@/app/_components/hook/UseLocalStorageState";
 
-interface Props {children: React.ReactNode;}
+interface DarkModeProviderProps {children: ReactNode;}
 
-type ThemeMode = "light" | "dark" | "system";
+export type ThemeMode = "light" | "dark" | "system";
 
-interface DarkModeContextType {
+export interface DarkModeContextType {
     mode: ThemeMode;
     isDarkMode: boolean;
     toggleDarkMode: () => void;
@@ -16,51 +16,66 @@ interface DarkModeContextType {
 
 const DarkModeContext=createContext<DarkModeContextType|undefined>(undefined);
 
-export function DarkModeProvider({children}:Props) {
-    const [mode,setMode]=useLocalStorageState<ThemeMode>("system","theme mode")
-
-    const isSystemDark=typeof window !== "undefined"
-        ? window.matchMedia('(prefers-color-scheme: dark)').matches
-        : false
+export function DarkModeProvider({children}: DarkModeProviderProps): JSX.Element {
+    const [mode,setMode]=useLocalStorageState<ThemeMode>("system","themeMode");
+    const [isSystemDark, setIsSystemDark] = useState<boolean>(false)
 
     const isDarkMode=mode === "dark" || (mode === "system" && isSystemDark);
 
     useEffect(() => {
-        const root=document.documentElement;
-        root.classList.toggle("dark-mode",isDarkMode);
-        root.classList.toggle("light-mode",!isDarkMode);
-    },[isDarkMode]);
+        if (typeof window === "undefined") return;
+
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+        setIsSystemDark(mediaQuery.matches);
+
+        const handleChange = (event: MediaQueryListEvent) => {
+            setIsSystemDark(event.matches);
+        };
+
+        mediaQuery.addEventListener("change", handleChange);
+
+        return () => {
+            mediaQuery.removeEventListener("change", handleChange);
+        };
+    }, []);
 
     useEffect(() => {
-        const mediaQuery=window.matchMedia('(prefers-color-scheme: dark)');
+        if (typeof window === "undefined") return;
 
-        const handleChange=()=>{
-            if (mode === "system"){
-                const root=document.documentElement;
-                const newIsDark=mediaQuery.matches;
-                root.classList.toggle("dark-mode",newIsDark);
-                root.classList.toggle("light-mode",!newIsDark);
-            }
+        const root=document.documentElement;
+        if (isDarkMode) {
+            root.classList.add("dark-mode");
+            root.classList.remove("light-mode");
+            root.setAttribute("data-theme", "dark");
+        } else {
+            root.classList.add("light-mode");
+            root.classList.remove("dark-mode");
+            root.setAttribute("data-theme", "light");
         }
+    },[isDarkMode]);
 
-        mediaQuery.addEventListener("change",handleChange);
-        return () => mediaQuery.removeEventListener("change",handleChange);
-    }, [mode]);
-
-    function toggleDarkMode(){
-        setMode((prev:boolean)=>!prev);
+    function toggleDarkMode(): void {
+        setMode((prevMode: ThemeMode)=>{
+            if (prevMode === "light") return "dark";
+            if (prevMode === "dark") return "system";
+            return "light";
+        })
     }
 
-    return(
-        <DarkModeContext.Provider value={{mode,isDarkMode,toggleDarkMode,setMode}}>
-            {children}
-        </DarkModeContext.Provider>
-    )
+    const value: DarkModeContextType = {
+        mode,
+        isDarkMode,
+        toggleDarkMode,
+        setMode,
+    }
+
+    return <DarkModeContext.Provider value={value}>{children}</DarkModeContext.Provider>;
 }
 
-export function useDarkMode() {
+export function useDarkMode(): DarkModeContextType {
     const context = useContext(DarkModeContext);
-    if (context === undefined) throw new Error("DarkModeContext was used outside of DarkModeProvider");
+    if (!context) {
+        throw new Error("useDarkMode must be used within a DarkModeProvider");}
     return context
 }
-
