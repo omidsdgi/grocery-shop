@@ -2,9 +2,11 @@ import CategoriesIcon from "@/app/_components/layouts/header/menu/categories-ico
 import {MoreButton} from "@/app/_components/layouts/header/menu/categories-icon/MoreButton";
 
 import Link from "next/link";
-import {MenuMock} from "@/app/_components/mock/MenuMock";
+import {getMenu} from "@/app/_lib/data-service";
+import {Flame} from "lucide-react";
 
-export default function MenuList() {
+export default async function MenuList() {
+const {mainMenu}= await getMenu();
     return (
         <>
             <div id="all_categories"
@@ -23,12 +25,12 @@ export default function MenuList() {
             <nav id="main_menu">
                 <ul className="flex flex-col lg:flex-row items-start lg:items-center text-heading6 lg:text-heading-sm 2xl:text-heading6 gap-[32px] mt-[32px] lg:mt-0 lg:gap-3 xl:gap-5 2xl:gap-10">
 
-                    {MenuMock.map((item,index) =>{
+                    {mainMenu.map((item,index) =>{
                         return (
                             <li key={index}>{
-                                item.icon ?
+                                item.icon_name ?
                                     (<Link href="#"  className="flex flex-row gap-2 items-center">
-                                            <i className="icon-flame text-[24px]"></i>
+                                            <Flame className="text-[24px]"/>
                                             <div className="text-heading6 lg:text-heading-sm xl:text-heading6">{item.title}</div>
                                         </Link>
                                     ) :(
