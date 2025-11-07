@@ -1,0 +1,17 @@
+import {supabase} from "./Supabase"
+import {MenuGroups} from "@/components/type/MenuItemType";
+
+export async function getMenu():Promise<MenuGroups> {
+    const {data,error}=await supabase
+        .from('menu_item')
+        .select('*')
+        .order('rank')
+    if(error){
+        console.error('Error fetching menu:', error);
+        throw new Error('Failed to fetch menu items');
+    }
+    const mainMenu = data.filter(item => item.menuId === 1);
+    const browseCategory = data.filter(item => item.menuId ===2);
+    return {mainMenu,browseCategory};
+}
+
