@@ -11,7 +11,6 @@ export default function FeaturedCategories() {
             </div>
             <div className="flex flex-wrap justify-between gap-[24px]">
                 {featureCategoriesMock?.map((item,index)=>{
-                    console.log('featureCategoriesMock:', featureCategoriesMock);
 
                     return (
                         <Link key={index} href={item.link} style={{backgroundColor:item.color}}
