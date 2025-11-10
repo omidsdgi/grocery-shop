@@ -14,6 +14,7 @@ export  interface MenuGroups  {
 }
 export interface MainMenuListProps {
     mainMenu: MenuItemType[];
+    browseCategory: MenuItemType[];
 }
 
 export interface CategoriesIconProps {

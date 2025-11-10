@@ -2,8 +2,8 @@ import Link from "next/link";
 import Logo from "@/app/_components/common/ui/Logo";
 import SearchForm from "@/app/_components/layouts/header/search-form/SearchForm";
 import HeaderIcons, {HeaderIconsResponsive} from "@/app/_components/layouts/header/header-icons/HeaderIcons";
-import MenuList from "@/app/_components/layouts/header/menu/MenuList";
 import { Menu } from 'lucide-react';
+import MenuCategories from "@/app/_components/layouts/header/menu/menu-categories/MenuCategories";
 
 export default function Header() {
     return (
@@ -19,7 +19,7 @@ export default function Header() {
             <div className="border-gray-200 border-y h">
                 <div
                     className="container transition-all w-4/5 rounded-[24px] lg:rounded-[0px] lg:w-auto flex absolute top-0 bottom-0 -left-[100%] lg:static flex-col lg:flex-row justify-start lg:justify-between items-start pt-[16px] pl-[24px] lg:py-[13px] lg:items-center h-[100vh] bg-white lg:h-[70px] mobile-menu z-50">
-                    <MenuList/>
+                    <MenuCategories/>
                     <div className="hidden lg:flex items-center shrink-0 gap-3">
                         <Link href="#"><i
                             className="icon-headset text-[30px] xl:text-[32px] 2xl:text-[36px] aspect-square"></i></Link>
