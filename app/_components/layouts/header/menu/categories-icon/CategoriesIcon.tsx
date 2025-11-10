@@ -1,7 +1,8 @@
 import {CategoryCard} from "@/app/_components/layouts/header/menu/categories-icon/CategoryCard";
+import {FC} from "react";
 import {CategoriesIconProps} from "@/components/type/MenuItemType";
 
-export default  function CategoriesIcon({browseCategory}:CategoriesIconProps) {
+export  const CategoriesIcon:FC<CategoriesIconProps>=({browseCategory})=> {
 
     return (
         <div className="flex flex-wrap gap-4">
