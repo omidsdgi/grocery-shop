@@ -12,7 +12,7 @@ export  interface MenuGroups  {
     mainMenu: MenuItemType[];
     browseCategory: MenuItemType[];
 }
-export interface MainMenuListProps {
+export interface MainListProps {
     mainMenu: MenuItemType[];
     browseCategory: MenuItemType[];
 }
