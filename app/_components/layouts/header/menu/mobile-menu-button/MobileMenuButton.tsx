@@ -31,6 +31,17 @@ export default function MobileMenuButton({children}: {children: ReactNode}) {
         };
     }, []);
 
+    useEffect(() => {
+        if (showMobileMenu){
+            document.body.style.overflowY = "hidden";
+            } else {
+            document.body.style.overflowY = "auto";
+        }
+        return()=>{
+            document.body.style.overflowY = "auto";
+        }
+    }, [showMobileMenu]);
+
     return (
         <>
             <button
