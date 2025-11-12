@@ -44,7 +44,7 @@ export default function MobileMenuButton({children}: {children: ReactNode}) {
 
             <div
                 ref={menuRef}
-                className={` ${showMobileMenu ? "left-0 fixed" : "-left-[100%] absolute"} container transition-all w-4/5 rounded-[24px] lg:rounded-[0px] lg:w-auto flex  top-0 bottom-0  lg:static flex-col lg:flex-row justify-start lg:justify-between items-start pt-[16px] pl-[24px] lg:py-[13px] lg:items-center h-[100vh] bg-white lg:h-[70px] mobile-menu z-50`}
+                className={` ${showMobileMenu ? "left-0 fixed overflow-y-scroll" : "-left-[100%] absolute"} container transition-all w-4/5 rounded-[24px] lg:rounded-[0px] lg:w-auto flex  top-0 bottom-0  lg:static flex-col lg:flex-row justify-start lg:justify-between items-start pt-[16px] pl-[24px] lg:py-[13px] lg:items-center h-[100vh] bg-white lg:h-[70px] mobile-menu z-50`}
             >
                 {children}
 
