@@ -32,13 +32,13 @@ export default  function MenuList({mainMenu, browseCategory}:MainListProps) {
     return (
         <>
             <div className={"relative"} ref={menuRef}>
-                <div onClick={categoryBtnClickHandler} className="flex cursor-pointer bg-green-200 gap-2.5 text-white px-4 py-3 rounded-[5px] items-center" >
+                <div onClick={categoryBtnClickHandler} className="inline-flex cursor-pointer bg-green-200 gap-2.5 text-white px-4 py-3 rounded-[5px] items-center" >
                     <Link href="#"><i className="icon-apps text-[24px]"></i></Link>
                     <div className="text-medium">Browse All Categories</div>
                     <i className="icon-angle-small-down text-[24px]"></i>
                 </div>
                 <div
-                    className= {`${showCategoryMenu ? "flex" : "hidden"} lg:absolute z-20 bg-white left-0 top-16 w-[500px] rounded-[5px] lg:border-[1px] border-green-300 p-[30px] hover:cursor-default`}>
+                    className= {`${showCategoryMenu ? "flex" : "hidden"} lg:absolute z-20 bg-white left-0 top-16 lg:w-[500px] rounded-[5px] lg:border-[1px] border-green-300 lg:p-[30px] hover:cursor-default`}>
                     <div className="flex flex-wrap justify-between gap-y-[15px]">
                         <CategoriesIcon browseCategory={browseCategory} />
                         <MoreButton text={"Show More Category"}/>
