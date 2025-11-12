@@ -38,7 +38,7 @@ export default  function MenuList({mainMenu, browseCategory}:MainListProps) {
                     <i className="icon-angle-small-down text-[24px]"></i>
                 </div>
                 <div
-                    className= {`${showCategoryMenu ? "flex" : "hidden"} absolute z-20 bg-white left-0 top-16 w-[500px] rounded-[5px] border-[1px] border-green-300 p-[30px] hover:cursor-default`}>
+                    className= {`${showCategoryMenu ? "flex" : "hidden"} lg:absolute z-20 bg-white left-0 top-16 w-[500px] rounded-[5px] lg:border-[1px] border-green-300 p-[30px] hover:cursor-default`}>
                     <div className="flex flex-wrap justify-between gap-y-[15px]">
                         <CategoriesIcon browseCategory={browseCategory} />
                         <MoreButton text={"Show More Category"}/>
