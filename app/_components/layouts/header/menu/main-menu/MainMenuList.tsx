@@ -1,9 +1,9 @@
 import Link from "next/link";
 import {Flame} from "lucide-react";
-import {MainMenuListProps} from "@/components/type/MenuItemType";
+import {MainListProps} from "@/components/type/MenuItemType";
 import {FC} from "react";
 
-export const MainMenuList:FC<MainMenuListProps>=({mainMenu})=> {
+export const MainMenuList:FC<MainListProps>=({mainMenu})=> {
     return (
         <nav id="main_menu">
             <ul className="flex flex-col lg:flex-row items-start lg:items-center text-heading6 lg:text-heading-sm 2xl:text-heading6 gap-[32px] mt-[32px] lg:mt-0 lg:gap-3 xl:gap-5 2xl:gap-10">
