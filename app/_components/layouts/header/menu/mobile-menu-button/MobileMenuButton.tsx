@@ -2,34 +2,21 @@
 import {Menu} from "lucide-react";
 import Link from "next/link";
 import {ReactNode, useEffect, useState, useRef} from "react";
+import {useOverlay} from "@/app/_components/hook/use-overlay";
 
 export default function MobileMenuButton({children}: {children: ReactNode}) {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
+    useOverlay({
+        refs:[menuRef,buttonRef],
+        onClickOutside:()=>setShowMobileMenu(false),
+        enable:showMobileMenu
+    })
     const toggleMenu = () => {
         setShowMobileMenu((prevState) => !prevState);
     };
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            const target = event.target as Node;
-
-            if (
-                (menuRef.current && menuRef.current.contains(target)) ||
-                (buttonRef.current && buttonRef.current.contains(target))
-            ) {
-                return;
-            }
-            setShowMobileMenu(false);
-        };
-        document.addEventListener("click", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
 
     useEffect(() => {
         if (showMobileMenu){
