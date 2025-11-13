@@ -22,7 +22,7 @@ export function CategoryCard({
             className={`
         flex items-center gap-3.5 rounded-[5px] 
         lg:border-[1px] lg:border-gray-300 
-        py-2.5 basis-full  lg:-[calc(50%-8px)] 
+        py-2.5 basis-full  lg:basis-[calc(50%-8px)] 
         justify-start pl-4 
         lg:hover:border-green-300 
         cursor-pointer
