@@ -1,33 +1,26 @@
 "use client"
-import {useEffect, useState, MouseEvent, useRef} from "react";
+import { useState, MouseEvent, useRef} from "react";
 import Link from "next/link";
 import {MoreButton} from "@/app/_components/layouts/header/menu/categories-icon/MoreButton";
 import {MainMenuList} from "@/app/_components/layouts/header/menu/main-menu/MainMenuList";
 import {CategoriesIcon} from "@/app/_components/layouts/header/menu/categories-icon/CategoriesIcon";
 import {MainListProps} from "@/components/type/MenuItemType";
+import {useOverlay} from "@/app/_components/hook/use-overlay";
 
 export default  function MenuList({mainMenu, browseCategory}:MainListProps) {
     const [showCategoryMenu, setShowCategoryMenu] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
 
+    useOverlay({
+        refs:[menuRef],
+        onClickOutside:()=>setShowCategoryMenu(false),
+        enable:showCategoryMenu,
+    })
+
     const categoryBtnClickHandler = (e:MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
         setShowCategoryMenu((prevState) => !prevState);
     };
-
-    useEffect(()=>{
-        const handleClickOutside=(event:Event)=>{
-            if (menuRef.current && !menuRef.current.contains(event.target as Node)){
-                setShowCategoryMenu(false);
-            }
-        }
-        if (showCategoryMenu){
-            document.addEventListener("click",handleClickOutside);
-        }
-        return () => {
-            document.removeEventListener("click",handleClickOutside );
-        }
-    },[showCategoryMenu]);
 
     return (
         <>
