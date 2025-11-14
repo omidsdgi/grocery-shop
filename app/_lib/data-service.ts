@@ -19,17 +19,8 @@ export async function getMenu():Promise<MenuGroups> {
 export async function getFeaturedCategory() :Promise<FeaturedCategoryTpe[]> {
     const {data, error}=await supabase
         .from("featured-category")
-        .select(`
-        id,
-        created_at,
-        title,
-        link,
-        color,
-        image,
-        items,
-        is_featured
-        `)
-         .eq("is_featured",false);
+        .select('*')
+         .eq("is_featured",true);
 
     if (error){
         console.error('Error fetching featured category:',error);
