@@ -8,7 +8,7 @@ export interface ProductType {
     weight: number;
     unit:string;
     price: number;
-    sell_price?: number;
+    sale_price?: number;
     label:string;
     description?: string;
     total?:number;
