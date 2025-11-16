@@ -1,45 +1,20 @@
-"use client"
-import {useEffect, useState} from "react";
 import {ProductType} from "@/components/type/ProductType";
 import {ChevronLeft, ChevronRight} from "lucide-react";
 import SimpleProductSlider from "@/app/_components/product/simple-product-slider/SimpleProductSlider";
 
-type ProductFilter = 'is_popular' | 'is_top_selling' | 'is_trending' | 'is_popular_fruit' | 'is_best_seller';
-
 interface Props {
     title: string;
-    filter: ProductFilter;
+    products:ProductType[]
     navLeftClass?: string;
     navRightClass?: string;
 }
 
-export default function ProductSection({title, filter, navLeftClass = 'swiper-nav-left', navRightClass = 'swiper-nav-right'}: Props) {
-    const [products, setProducts] = useState<ProductType[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        async function fetchProducts() {
-            try {
-                setLoading(true);
-                const response = await fetch(`/api/products?filter=${filter}`);
-                const data = await response.json();
-                setProducts(data);
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchProducts();
-    }, [filter]);
-
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center py-20">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-200"></div>
-            </div>
-        );
-    }
+export default function ProductSection({
+                                           title,
+                                           products,
+                                           navLeftClass = 'swiper-nav-left',
+                                           navRightClass = 'swiper-nav-right'}
+                                           : Props) {
 
     return (
         <>
