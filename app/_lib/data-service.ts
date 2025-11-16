@@ -30,6 +30,8 @@ export async function getFeaturedCategory() :Promise<FeaturedCategoryTpe[]> {
 
     return data ||[];
 }
+
+
 type ProductFilter = 'is_popular' | 'is_top_selling' | 'is_trending' | 'is_popular_fruit' | 'is_best_seller';
 
 export async function getProductsByFilter(filter:ProductFilter):Promise<ProductType[]>{
@@ -37,11 +39,21 @@ export async function getProductsByFilter(filter:ProductFilter):Promise<ProductT
         .from('product')
         .select('*')
         .eq("filter",true);
+    console.log('First product:', data?.[0]);
+    console.log('Price type:', typeof data?.[0]?.price);
+    console.log('Rate type:', typeof data?.[0]?.rate);
 
     if (error){
         console.error(`Error fetching products with filter ${filter}:`,error);
         throw new Error(`Failed to fetch products with filter ${filter}`);
     }
-    return data ||[];
+    return (data ||[]).map(product=>({
+        ...product,
+        price:Number(product.price),
+        rate: Number(product.rate),
+        weight: Number(product.weight),
+        sale_price: product.sale_price ? Number(product.sale_price) : undefined
+
+    }));
 }
 
