@@ -3,21 +3,10 @@ import {ChevronDown, ChevronUp, Eye, Heart, ShoppingCart, Shuffle} from "lucide-
 import Link from "next/link";
 import Rating from "@/app/_components/common/ui/Rating";
 import Badge from "@/app/_components/common/ui/Badge";
+import {ProductType} from "@/components/type/ProductType";
 
 interface Props {
-    data:{
-        title: string,
-        image: string,
-        category: string,
-        unit:string
-        price: number,
-        sale_price: number,
-        label: string,
-        rate:number,
-        weight:number,
-        sold?:number,
-        total?:number,
-    }
+    data:ProductType
 }
 export default function SimpleProductCard({data}:Props)
 {
@@ -29,7 +18,7 @@ export default function SimpleProductCard({data}:Props)
                     <div className="swiper-slide">
                         <div
                             className="group border-[1px] border-gray-200 hover:border-green-150 rounded-[10px] hover:shadow-[20px_20px_40px_0_rgba(24,24,24,0.07)] relative p-3 md:p-4 xl:px-5 xl:pb-5 lg:pt-[65px] h-full">
-                            <Badge badge={data.label} price={data.price} sale_price={data.sale_price} />
+                            <Badge badge={data.label} price={data.price}  sale_price={data.sale_price}/>
                             <div
                                 className="mt-8 hidden group-hover:flex rounded-[5px] border-[1px] border-green-200 w-max absolute top-[100px] left-[50%] translate-x-[-50%] bg-white productAction cursor-pointer">
                                 <div className="p-2.5 border-r-[1px] border-r-green-200 hover:bg-green-150">
