@@ -2,19 +2,21 @@ import Section from "@/app/_components/layouts/section/Section";
 import Banner from "@/app/_components/common/ui/Banner";
 import FeaturedCategories from "@/app/_components/pages/FeaturedCategories";
 import MiniProductSlider from "@/app/_components/pages/MiniProductSlider";
-import SimpleProductSlider from "@/app/_components/product/simple-product-slider/SimpleProductSlider";
 import BestSellerSlider from "@/app/_components/pages/BestSellerSlider";
-import {popularFruits} from "@/app/_components/mock/popularFruits";
 import {BestSellers} from "@/app/_components/mock/BestSellers";
-import {ChevronLeft, ChevronRight} from "lucide-react";
+import {ChevronRight} from "lucide-react";
 import DealsOfTheDaysSlider from "@/app/_components/pages/DealsOfTheDaysSlider";
 import {DealsOfTheDaysMock} from "@/app/_components/mock/DealsOfTheDaysMock";
 import Link from "next/link";
 import BottomSlider from "@/app/_components/pages/BottomSlider";
 import ProductSection from "@/app/_components/product/product-section/ProductSection";
-import {popularProducts} from "@/app/_components/mock/papularProducts";
+import {getProductsByFilter} from "@/app/_lib/data-service";
 
-export default function Page() {
+export default async function Page() {
+    const [popularProducts, popularFruits] = await Promise.all([
+        getProductsByFilter('is_popular'),
+        getProductsByFilter('is_popular_fruit'),
+    ]);
   return (
       <>
       <Section>
@@ -31,21 +33,20 @@ export default function Page() {
           </Section>
           <Section>
               <ProductSection
-                  title="Popular Product"
+                  title="Popular Products"
                   products={popularProducts}
                   navLeftClass="swiper-nav-left"
                   navRightClass="swiper-nav-right"
                   />
            </Section>
           <Section>
-              <div className="flex justify-between mb-[50px]">
-                  <h2 className="text-heading3 text-blue-300">Popular Fruits</h2>
-                  <div className="flex items-center gap-3">
-                      <i className="swiper-nav-left2  cursor-pointer bg-gray-100 p-2 rounded-full text-gray-500 hover:bg-green-200 hover:text-white text-[24px]"><ChevronLeft className="w-5 h-5" /></i>
-                      <i className="swiper-nav-right2 cursor-pointer bg-gray-100 p-2 rounded-full text-gray-500 hover:bg-green-200 hover:text-white text-[24px]"><ChevronRight className="w-5 h-5" /></i>
-                  </div>
-              </div>
-              <SimpleProductSlider sliderData={popularFruits} nextEl={'.swiper-nav-right2'} prevEl={'.swiper-nav-left2'}/>
+              <ProductSection
+                  title="popular fruit"
+                  products={popularFruits}
+                  navLeftClass="swiper-nav-left"
+                  navRightClass="swiper-nav-right"
+                  />
+
           </Section>
           <Section>
               <div className="flex justify-between mb-[50px]">
