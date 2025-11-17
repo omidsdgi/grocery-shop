@@ -46,24 +46,21 @@ export default function SimpleProductCard({data}:Props)
                                 data.total && data.sold ?
                                     <>
                                         <div className="flex items-center justify-center mt-3">
-                                            {
-                                                data.sale_price ?
-                                                    <div>
-                                                        <span
-                                                            className="text-heading5 text-green-200">${data.sale_price}</span>
-                                                        <span
-                                                            className="text-heading-sm line-through text-gray-500">${data.price}</span>
-                                                    </div>
-                                                    :
-                                                    <div>
+                                            {data.sale_price ? (
+                                                <div>
                                                     <span
-                                                        className="text-heading5 text-green-200">${data.price}</span>
-
-                                                    </div>
-                                            }
+                                                        className="text-heading5 text-green-200">${data.sale_price}</span>
+                                                    <span
+                                                        className="text-heading-sm line-through text-gray-500">${data.price}</span>
+                                                </div>
+                                            ) : (
+                                                <div>
+                                                    <span className="text-heading5 text-green-200">${data.price}</span>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="mt-[15px] bg-gray-200 h-[4px] w-full rounded-[2px]">
-                                        <div style={{width: `${(data.sold / data.total) * 100}%`}}
+                                            <div style={{width: `${(data.sold / data.total) * 100}%`}}
                                                  className="bg-green-200 h-[4px] rounded-[2px]"></div>
                                         </div>
                                         <div
@@ -71,16 +68,24 @@ export default function SimpleProductCard({data}:Props)
                                         <div className="mt-[23px]">
                                             <button
                                                 className="flex justify-center items-center gap-2 xl:text-heading-sm text-white border-[1px] w-full rounded-[4px] bg-green-200 hover:bg-yellow-100 px-2 py-2 lg:py-[14px]">
-                                                <ShoppingCart className="w-[22px] h-[22px]" />
-                                                <span className="text-heading-sm">Add To Card</span>
+                                                <ShoppingCart className="w-[22px] h-[22px]"/>
+                                                <span className="text-heading-sm">Add To Cart</span>
                                             </button>
                                         </div>
                                     </> :
                                     <div className="flex items-center justify-between mt-3">
-                                        <div>
-                                            <span className="text-heading5 text-green-200">${data.sale_price}</span>
-                                            <span className="text-heading-sm line-through text-gray-500">${data.price}</span>
-                                        </div>
+                                        {data.sale_price ? (
+                                            <div>
+                                                    <span
+                                                        className="text-heading5 text-green-200">${data.sale_price}</span>
+                                                <span
+                                                    className="text-heading-sm line-through text-gray-500">${data.price}</span>
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <span className="text-heading5 text-green-200">${data.price}</span>
+                                            </div>
+                                        )}
                                         <div className="add-product">
                                             <button
                                                 className="flex items-center justify-center text-heading-sm text-green-200 border-[1px] rounded-[4px] bg-green-150 px-[10px] py-[5px]">Adds
