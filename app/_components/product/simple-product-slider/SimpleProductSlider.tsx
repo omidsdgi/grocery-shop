@@ -2,36 +2,48 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay,Navigation} from "swiper/modules";
 import SimpleProductCard from "@/app/_components/product/product-card/SimpleProductCard";
+import {ProductType} from "@/components/type/ProductType";
 
 interface Props{
-    sliderData:Array<any>,
+    sliderData:ProductType[],
     nextEl?:string,
     prevEl?:string,
+    slidesPerView?: number
 }
-export default function SimpleProductSlider({sliderData,nextEl,prevEl}: Props) {
+export default function SimpleProductSlider({
+                                                sliderData,
+                                                nextEl,prevEl,
+                                                slidesPerView
+}: Props) {
+
+    const defaultSlidesPerView = slidesPerView || 2;
+
     return (
         <>
-
             <Swiper
                 spaceBetween={16}
-                slidesPerView={2}
+                slidesPerView={defaultSlidesPerView}
                 autoplay={true}
                 modules={[Autoplay,Navigation]}
-                navigation={{
+                navigation={
+                    nextEl && prevEl
+                        ? {
                     nextEl: nextEl,
                     prevEl: prevEl,
-                }}
+                }
+                : false
+            }
                 breakpoints={{
                     768: {
-                        slidesPerView: 3,
+                        slidesPerView: slidesPerView ? Math.min(slidesPerView, 3) : 3,
                         spaceBetween: 18
                     },
                     1024: {
-                        slidesPerView: 4,
+                        slidesPerView:  slidesPerView ? Math.min(slidesPerView, 4) : 4,
                         spaceBetween: 22
                     },
                     1280: {
-                        slidesPerView: 5,
+                        slidesPerView: slidesPerView ? Math.min(slidesPerView, 5) : 5,
                         spaceBetween: 24
                     }
                 }}
