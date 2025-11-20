@@ -14,10 +14,11 @@ export interface ProductType {
     total?:number;
     sold?:number;
     quantity?: number;
-    discount_Expire_date?: Date;
+    discount_Expire_date?: string | null;
     is_popular?: boolean;
     is_top_selling?: boolean;
     is_trending?: boolean;
     is_popular_fruit?: boolean;
     is_best_seller?: boolean;
+    [key:string]: any;
 }
