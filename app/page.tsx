@@ -4,18 +4,17 @@ import FeaturedCategories from "@/app/_components/pages/FeaturedCategories";
 import MiniProductSlider from "@/app/_components/pages/MiniProductSlider";
 import {ChevronRight} from "lucide-react";
 import DealsOfTheDaysSlider from "@/app/_components/pages/DealsOfTheDaysSlider";
-import {DealsOfTheDaysMock} from "@/app/_components/mock/DealsOfTheDaysMock";
 import Link from "next/link";
 import BottomSlider from "@/app/_components/pages/BottomSlider";
 import ProductSection from "@/app/_components/product/product-section/ProductSection";
-import {getProductsByFilter} from "@/app/_lib/data-service";
+import {getDealsOfTheDay, getProductsByFilter} from "@/app/_lib/data-service";
 
 export default async function Page() {
-    const [popularProducts, popularFruits,bestSeller] = await Promise.all([
+    const [popularProducts, popularFruits,bestSeller,dealsOfTheDay] = await Promise.all([
         getProductsByFilter('is_popular'),
         getProductsByFilter('is_popular_fruit'),
         getProductsByFilter('is_best_seller'),
-
+        getDealsOfTheDay()
     ]);
   return (
       <>
@@ -80,7 +79,7 @@ export default async function Page() {
                       Of The Days</h2>
                   <Link className="flex items-center" href="#">All Deals <i></i><ChevronRight className="w-5 h-5" /></Link>
               </div>
-              <DealsOfTheDaysSlider sliderData={DealsOfTheDaysMock}/>
+              <DealsOfTheDaysSlider sliderData={dealsOfTheDay}/>
           </Section>
 
           <Section>
