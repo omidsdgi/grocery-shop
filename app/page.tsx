@@ -2,8 +2,6 @@ import Section from "@/app/_components/layouts/section/Section";
 import Banner from "@/app/_components/common/ui/Banner";
 import FeaturedCategories from "@/app/_components/pages/FeaturedCategories";
 import MiniProductSlider from "@/app/_components/pages/MiniProductSlider";
-import BestSellerSlider from "@/app/_components/pages/BestSellerSlider";
-import {BestSellers} from "@/app/_components/mock/BestSellers";
 import {ChevronRight} from "lucide-react";
 import DealsOfTheDaysSlider from "@/app/_components/pages/DealsOfTheDaysSlider";
 import {DealsOfTheDaysMock} from "@/app/_components/mock/DealsOfTheDaysMock";
@@ -13,9 +11,11 @@ import ProductSection from "@/app/_components/product/product-section/ProductSec
 import {getProductsByFilter} from "@/app/_lib/data-service";
 
 export default async function Page() {
-    const [popularProducts, popularFruits] = await Promise.all([
+    const [popularProducts, popularFruits,bestSeller] = await Promise.all([
         getProductsByFilter('is_popular'),
         getProductsByFilter('is_popular_fruit'),
+        getProductsByFilter('is_best_seller'),
+
     ]);
   return (
       <>
@@ -35,16 +35,20 @@ export default async function Page() {
               <ProductSection
                   title="Popular Products"
                   products={popularProducts}
-                  navLeftClass="swiper-nav-left"
-                  navRightClass="swiper-nav-right"
+                  navLeftClass="swiper-nav-left-product"
+                  navRightClass="swiper-nav-right-product"
+                  showNavigation={true}
+                  slidesPerView={4}
                   />
            </Section>
           <Section>
               <ProductSection
                   title="popular fruit"
                   products={popularFruits}
-                  navLeftClass="swiper-nav-left"
-                  navRightClass="swiper-nav-right"
+                  navLeftClass="swiper-nav-left-friuts"
+                  navRightClass="swiper-nav-right-friuts"
+                  showNavigation={true}
+                  slidesPerView={5}
                   />
 
           </Section>
@@ -63,7 +67,11 @@ export default async function Page() {
                           <i className="icon-arrow-small-right text-[24px]"></i>
                       </a>
                   </div>
-                      <BestSellerSlider sliderData={BestSellers}/>
+                     <ProductSection
+                         products={bestSeller}
+                         showNavigation={false}
+                         slidesPerView={3}
+                         />
                   </div>
           </Section>
           <Section>
