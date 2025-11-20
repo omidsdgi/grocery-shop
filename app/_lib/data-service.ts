@@ -51,4 +51,16 @@ export async function getProductsByFilter(filter:ProductFilter):Promise<ProductT
 
     return data ||[]
 }
+export async function getDealsOfTheDay ():Promise<ProductType[]>{
+    const {data, error}=await supabase
+        .from('product')
+        .select('*')
+        .not('discount_Expire_date','is',null)
+        .gte('discount_Expire_date',new Date().toISOString());
 
+    if (error){
+        console.error('Error fetching deals of the day:', error);
+        throw new Error('Failed to fetch deals of the day');
+    }
+    return data ||[];
+}
