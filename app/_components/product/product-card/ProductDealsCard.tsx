@@ -3,20 +3,10 @@ import {ImageView} from "@/app/_components/common/image-view/ImageView";
 import Rating from "@/app/_components/common/ui/Rating";
 import {useEffect, useState} from "react";
 import {timerHelper} from "@/utils/Timer";
+import {ProductType} from "@/components/type/ProductType";
 
 interface Props {
-   data: {
-        title: string;
-        image: string;
-        category: string;
-        rate: number;
-        weight: number;
-        unit: string;
-        price: number;
-        sale_price: number;
-        lable: string;
-        dead_line: string
-    }
+data:ProductType
 }
 export default function ProductDealsCard({data}:Props) {
     const [remainTime, setRemainTime] = useState({
@@ -27,14 +17,21 @@ export default function ProductDealsCard({data}:Props) {
     })
 
     useEffect(()=> {
+        const deadline = data.discount_Expire_date;
+
+        if (!deadline) {
+            return;
+        }
         const interval=setInterval(() => {
-            const timerObj = timerHelper(data.dead_line);
+
+            const timerObj = timerHelper(deadline);
             setRemainTime(timerObj)
         }, 1000)
+
         return () => {
             clearInterval(interval);
         }
-    },[data.dead_line])
+    },[data.discount_Expire_date])
 
     return (
         <div className="relative h-[438px]">
