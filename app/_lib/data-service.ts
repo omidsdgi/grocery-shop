@@ -8,6 +8,7 @@ export async function getMenu():Promise<MenuGroups> {
         .from('menu_item')
         .select('*')
         .order('rank')
+
     if(error){
         console.error('Error fetching menu:', error);
         throw new Error('Failed to fetch menu items');
@@ -31,7 +32,6 @@ export async function getFeaturedCategory() :Promise<FeaturedCategoryTpe[]> {
     return data ||[];
 }
 
-
 type ProductFilter ='is_popular' | 'is_top_selling' | 'is_trending' | 'is_popular_fruit' | 'is_best_seller';
 
 export async function getProductsByFilter(filter:ProductFilter):Promise<ProductType[]>{
@@ -42,8 +42,6 @@ export async function getProductsByFilter(filter:ProductFilter):Promise<ProductT
 
     if (error){
         console.error(`Error fetching products with filter ${filter}:`,error);
-        console.error("Supabase error details:", error);
-        console.log("Fetched data:", data);
         throw new Error(`Failed to fetch products with filter ${filter}`);
     }
     console.log(`Fetching products with filter: ${filter}`);
@@ -89,7 +87,7 @@ export async function getProductByType(type:ProductQueryType,limit:number=3):Pro
     const{data, error}=await query
     console.log('data',data);
     if (error){
-        console.error('Error fetching products with type ${type}`):', error)
+        console.error(`Error fetching products with type ${type}):`, error)
         throw new Error(`Failed to fetch ${type} products`);
     }
     return data ||[];
