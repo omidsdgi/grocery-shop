@@ -5,9 +5,9 @@ import MiniProductSlider from "@/app/_components/pages/MiniProductSlider";
 import {ChevronRight} from "lucide-react";
 import DealsOfTheDaysSlider from "@/app/_components/pages/DealsOfTheDaysSlider";
 import Link from "next/link";
-import BottomSlider from "@/app/_components/pages/BottomSlider";
 import ProductSection from "@/app/_components/product/product-section/ProductSection";
-import {getDealsOfTheDay, getProductByType, getProductsByFilter} from "@/app/_lib/data-service";
+import {getDealsOfTheDay, getProductsByFilter} from "@/app/_lib/data-service";
+import BottomSlider from "@/app/_components/pages/BottomSlider";
 
 export default async function Page() {
     const [popularProducts, popularFruits,bestSeller,dealsOfTheDay] = await Promise.all([
@@ -17,12 +17,6 @@ export default async function Page() {
         getDealsOfTheDay()
     ]);
 
-    const [topSelling,trending,recently,topRated]=await Promise.all([
-        getProductByType('topSelling'),
-        getProductByType('trending'),
-        getProductByType('recently'),
-        getProductByType('topRated')
-    ])
   return (
       <>
       <Section>
@@ -90,12 +84,7 @@ export default async function Page() {
           </Section>
 
           <Section>
-              <BottomSlider
-              topSelling={topSelling}
-              trending={trending}
-              recently={recently}
-              topRated={topRated}
-              />
+              <BottomSlider/>
           </Section>
       </>
   );

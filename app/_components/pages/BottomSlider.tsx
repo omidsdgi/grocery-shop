@@ -2,16 +2,29 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay} from "swiper/modules";
 import ProductVerticalList from "@/app/_components/product/product-vertical-list/ProductVerticalList";
-import {ProductType} from "@/components/type/ProductType";
+import {InView} from "react-intersection-observer";
+import {useQuery} from "@tanstack/react-query";
+import {getProductByType} from "@/app/_lib/data-service";
 
-interface BottomSliderProps {
-    topSelling:ProductType[];
-    trending:ProductType[];
-    recently:ProductType[];
-    topRated:ProductType[];
-}
+export default function BottomSlider() {
+  const {data:threeData}=useQuery({
+      queryKey:['bottomSlider','threeData'],
+      queryFn:async ()=>{
+          const [topSelling,trending,recently] = await Promise.all([
+              getProductByType('topSelling', 3),
+              getProductByType('trending', 3),
+              getProductByType('recently', 3),
+          ])
+          return {topSelling, trending, recently};
+      }
+      })
 
-export default function BottomSlider({topSelling,trending,recently,topRated}:BottomSliderProps) {
+      const {data:topRatedData,refetch} = useQuery ({
+          queryKey:['bottomSlider', 'topRated'],
+          queryFn: ()=>getProductByType('topRated', 3),
+          enabled: false
+  })
+
     return (
         <Swiper
             spaceBetween={16}
@@ -34,18 +47,28 @@ export default function BottomSlider({topSelling,trending,recently,topRated}:Bot
             }}
         >
             <SwiperSlide>
-                <ProductVerticalList title={'Top Selling'} data={topSelling}/>
+                {threeData?.topSelling &&
+                <ProductVerticalList title={'Top Selling'} data={threeData.topSelling}/>
+                }
             </SwiperSlide>
             <SwiperSlide>
-                <ProductVerticalList title={'Trending Products'} data={trending}/>
+                {threeData?.trending &&
+                <ProductVerticalList title={'Trending Products'} data={threeData.trending}/>
+                }
             </SwiperSlide>
             <SwiperSlide>
-                <ProductVerticalList title={'Recently Added'} data={recently}/>
+                {threeData?.recently &&
+                <ProductVerticalList title={'Recently Added'} data={threeData.recently}/>
+                }
             </SwiperSlide>
             <SwiperSlide>
-                <ProductVerticalList title={'Top Rated'} data={topRated}/>
-            </SwiperSlide>
 
+                <InView as='div' triggerOnce onChange={(inView)=>inView && refetch()}>
+                    {topRatedData &&
+                <ProductVerticalList title={'Top Rated'} data={topRatedData}/>
+                    }
+                </InView>
+            </SwiperSlide>
         </Swiper>
     );
 }
