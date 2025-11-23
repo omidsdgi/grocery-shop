@@ -2,12 +2,16 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay} from "swiper/modules";
 import ProductVerticalList from "@/app/_components/product/product-vertical-list/ProductVerticalList";
-import {TopSellingMock} from "@/app/_components/mock/TopSelling";
-import {TrendingProductsMock} from "@/app/_components/mock/TrendingProducts";
-import {RecentlyAddedMock} from "@/app/_components/mock/RecentlyAdded";
-import {topRatedMock} from "@/app/_components/mock/TopRated";
+import {ProductType} from "@/components/type/ProductType";
 
-export default function BottomSlider() {
+interface BottomSliderProps {
+    topSelling:ProductType[];
+    trending:ProductType[];
+    recently:ProductType[];
+    topRated:ProductType[];
+}
+
+export default function BottomSlider({topSelling,trending,recently,topRated}:BottomSliderProps) {
     return (
         <Swiper
             spaceBetween={16}
@@ -30,16 +34,16 @@ export default function BottomSlider() {
             }}
         >
             <SwiperSlide>
-                <ProductVerticalList title={'Top Selling'} data={TopSellingMock}/>
+                <ProductVerticalList title={'Top Selling'} data={topSelling}/>
             </SwiperSlide>
             <SwiperSlide>
-                <ProductVerticalList title={'Trending Products'} data={TrendingProductsMock}/>
+                <ProductVerticalList title={'Trending Products'} data={trending}/>
             </SwiperSlide>
             <SwiperSlide>
-                <ProductVerticalList title={'Recently Added'} data={RecentlyAddedMock}/>
+                <ProductVerticalList title={'Recently Added'} data={recently}/>
             </SwiperSlide>
             <SwiperSlide>
-                <ProductVerticalList title={'Top Rated'} data={topRatedMock}/>
+                <ProductVerticalList title={'Top Rated'} data={topRated}/>
             </SwiperSlide>
 
         </Swiper>

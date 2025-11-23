@@ -21,7 +21,7 @@ export async function getFeaturedCategory() :Promise<FeaturedCategoryTpe[]> {
     const {data, error}=await supabase
         .from("featured-category")
         .select('*')
-         .eq("is_featured",true);
+        .eq("is_featured",true);
 
     if (error){
         console.error('Error fetching featured category:',error);
@@ -47,7 +47,6 @@ export async function getProductsByFilter(filter:ProductFilter):Promise<ProductT
         throw new Error(`Failed to fetch products with filter ${filter}`);
     }
     console.log(`Fetching products with filter: ${filter}`);
-    console.log(data);
 
     return data ||[]
 }
@@ -61,6 +60,37 @@ export async function getDealsOfTheDay ():Promise<ProductType[]>{
     if (error){
         console.error('Error fetching deals of the day:', error);
         throw new Error('Failed to fetch deals of the day');
+    }
+    return data ||[];
+}
+type ProductQueryType = 'topSelling' | 'trending' | 'recently' | 'topRated' ;
+
+export async function getProductByType(type:ProductQueryType,limit:number=3):Promise<ProductType[]>{
+    let query=supabase.from('product').select('*')
+    switch (type) {
+        case 'topSelling':
+            query=query.order('price',{ascending:false});
+            break;
+        case 'trending':
+            query=query.order('weight',{ascending:false});
+            break;
+        case 'recently':
+            query=query.order('created_at',{ascending:false});
+            break;
+        case 'topRated':
+            query=query.order('rate',{ascending:false});
+            break;
+
+        default:
+            query=query.order('id',{ascending:true});
+    }
+    query=query.limit(limit);
+
+    const{data, error}=await query
+    console.log('data',data);
+    if (error){
+        console.error('Error fetching products with type ${type}`):', error)
+        throw new Error(`Failed to fetch ${type} products`);
     }
     return data ||[];
 }

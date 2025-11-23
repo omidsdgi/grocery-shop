@@ -7,7 +7,7 @@ import DealsOfTheDaysSlider from "@/app/_components/pages/DealsOfTheDaysSlider";
 import Link from "next/link";
 import BottomSlider from "@/app/_components/pages/BottomSlider";
 import ProductSection from "@/app/_components/product/product-section/ProductSection";
-import {getDealsOfTheDay, getProductsByFilter} from "@/app/_lib/data-service";
+import {getDealsOfTheDay, getProductByType, getProductsByFilter} from "@/app/_lib/data-service";
 
 export default async function Page() {
     const [popularProducts, popularFruits,bestSeller,dealsOfTheDay] = await Promise.all([
@@ -16,6 +16,13 @@ export default async function Page() {
         getProductsByFilter('is_best_seller'),
         getDealsOfTheDay()
     ]);
+
+    const [topSelling,trending,recently,topRated]=await Promise.all([
+        getProductByType('topSelling'),
+        getProductByType('trending'),
+        getProductByType('recently'),
+        getProductByType('topRated')
+    ])
   return (
       <>
       <Section>
@@ -83,7 +90,12 @@ export default async function Page() {
           </Section>
 
           <Section>
-              <BottomSlider/>
+              <BottomSlider
+              topSelling={topSelling}
+              trending={trending}
+              recently={recently}
+              topRated={topRated}
+              />
           </Section>
       </>
   );
