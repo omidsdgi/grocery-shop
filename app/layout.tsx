@@ -12,6 +12,7 @@ import Footer from "@/app/_components/layouts/footer/Footer";
 import {Quicksand} from "next/font/google";
 import localfont from "next/font/local"
 import {DarkModeProvider} from "@/app/_components/context/DarkModeContext";
+import QueryProvider from "@/app/_components/providers/QueryProvider";
 
 const quicksand=Quicksand({
     subsets:['latin'],
@@ -20,9 +21,9 @@ const quicksand=Quicksand({
 const lato=localfont({
     src:[
         {
-          path:'../public/fonts/Lato-Thin.woff2',
-          weight:'100',
-          style:'normal'
+            path:'../public/fonts/Lato-Thin.woff2',
+            weight:'100',
+            style:'normal'
         },
         {
             path:'../public/fonts/Lato-Light.woff2',
@@ -34,7 +35,7 @@ const lato=localfont({
             weight:'400',
             style:'normal'
         }
-        ]
+    ]
 })
 export const metadata:Metadata = {
     title: {
@@ -50,13 +51,15 @@ export default function RootLayout({children}: Props) {
     return (
         <html lang="en" suppressHydrationWarning>
         <body className={`${quicksand.className},${lato.className}`} suppressHydrationWarning >
-        <DarkModeProvider>
-        <header>
-            <Header/>
-        </header>
-        <main>{children}</main>
-        <Footer/>
-        </DarkModeProvider>
+        <QueryProvider>
+            <DarkModeProvider>
+                <header>
+                    <Header/>
+                </header>
+                <main>{children}</main>
+                <Footer/>
+            </DarkModeProvider>
+        </QueryProvider>
         </body>
         </html>
     )
