@@ -42,7 +42,7 @@ export default function SearchForm() {
     const searchResults = mutation.data || [];
 
     return (
-        <div className="relative max-w-[700px] w-full mx-[15px] hidden lg:block">
+        <div className="relative max-w-[700px] w-full mx-[15px]  lg:block">
             <div className="border-2 border-green-150 rounded-[5px]">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
