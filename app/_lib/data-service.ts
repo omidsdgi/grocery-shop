@@ -44,7 +44,6 @@ export async function getProductsByFilter(filter:ProductFilter):Promise<ProductT
         console.error(`Error fetching products with filter ${filter}:`,error);
         throw new Error(`Failed to fetch products with filter ${filter}`);
     }
-    console.log(`Fetching products with filter: ${filter}`);
 
     return data ||[]
 }
@@ -85,10 +84,22 @@ export async function getProductByType(type:ProductQueryType,limit:number=3):Pro
     query=query.limit(limit);
 
     const{data, error}=await query
-    console.log('data',data);
     if (error){
         console.error(`Error fetching products with type ${type}):`, error)
         throw new Error(`Failed to fetch ${type} products`);
     }
     return data ||[];
+}
+
+export async function searchProducts(searchText: string): Promise<ProductType[]> {
+    const { data, error } = await supabase
+        .from('product')
+        .select('*')
+        .ilike('title', `%${searchText}%`);
+
+    if (error) {
+        console.error('خطا در جستجو:', error);
+        throw error;
+    }
+    return data || [];
 }
