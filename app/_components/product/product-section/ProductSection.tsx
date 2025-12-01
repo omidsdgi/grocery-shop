@@ -17,7 +17,6 @@ export default function ProductSection({
                                            navLeftClass = 'swiper-nav-left',
                                            navRightClass = 'swiper-nav-right',
                                            showNavigation,
-                                            slidesPerView
         }: Props) {
 
     return (
@@ -39,7 +38,6 @@ export default function ProductSection({
                 sliderData={products}
                 nextEl={showNavigation ? `.${navRightClass}` : undefined}
                 prevEl={showNavigation ? `.${navLeftClass}` : undefined}
-                slidesPerView={slidesPerView}
             />
         </>
     );
