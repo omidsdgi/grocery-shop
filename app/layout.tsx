@@ -6,7 +6,7 @@ import  "swiper/css/autoplay"
 import  "swiper/css/navigation"
 
 import {ReactNode} from "react";
-import {Metadata} from "next";
+import {Metadata, Viewport} from "next";
 import Header from "@/app/_components/layouts/header/Header";
 import Footer from "@/app/_components/layouts/footer/Footer";
 import {Quicksand} from "next/font/google";
@@ -43,6 +43,10 @@ export const metadata:Metadata = {
         default:'Welcome to Grocery Shop',
     },
     description: ' your online destination for fresh groceries, daily essentials, and household products. Shop now for fast delivery and unbeatable quality!',
+}
+export const viewport:Viewport = {
+    width: 'device-width',
+    initialScale: 1,
 }
 interface Props {
     children: ReactNode;
