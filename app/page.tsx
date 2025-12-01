@@ -38,7 +38,6 @@ export default async function Page() {
                   navLeftClass="swiper-nav-left-product"
                   navRightClass="swiper-nav-right-product"
                   showNavigation={true}
-                  slidesPerView={4}
                   />
            </Section>
           <Section>
@@ -48,7 +47,6 @@ export default async function Page() {
                   navLeftClass="swiper-nav-left-friuts"
                   navRightClass="swiper-nav-right-friuts"
                   showNavigation={true}
-                  slidesPerView={5}
                   />
 
           </Section>
