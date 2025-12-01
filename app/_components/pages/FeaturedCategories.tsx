@@ -8,7 +8,7 @@ export default async function FeaturedCategories() {
 
     return (
         <Section className= 'mb-[75px]'>
-            <div className="hidden sm:flex mb-[50px]">
+            <div className="sm:flex mb-[50px]">
                 <h2 className="text-heading3 text-blue-300">Featured Categories</h2>
             </div>
             <div className="flex flex-wrap justify-between gap-[24px]">
