@@ -13,16 +13,17 @@ interface Props{
 export default function SimpleProductSlider({
                                                 sliderData,
                                                 nextEl,prevEl,
-                                                slidesPerView
+                                                // slidesPerView
 }: Props) {
 
-    const defaultSlidesPerView = slidesPerView || 2;
+    // const defaultSlidesPerView = slidesPerView || 2;
+    // const defaultSlidesPerView = 2;
 
     return (
         <>
             <Swiper
                 spaceBetween={16}
-                slidesPerView={defaultSlidesPerView}
+                slidesPerView={2}
                 autoplay={true}
                 modules={[Autoplay,Navigation]}
                 navigation={
@@ -35,16 +36,16 @@ export default function SimpleProductSlider({
             }
                 breakpoints={{
                     768: {
-                        slidesPerView: slidesPerView ? Math.min(slidesPerView, 3) : 3,
+                        slidesPerView: 3,
                         spaceBetween: 18
                     },
                     1024: {
-                        slidesPerView:  slidesPerView ? Math.min(slidesPerView, 4) : 4,
+                        slidesPerView: 4,
                         spaceBetween: 22
                     },
                     1280: {
-                        slidesPerView: slidesPerView ? Math.min(slidesPerView, 5) : 5,
-                        spaceBetween: 24
+                        slidesPerView: 5,
+                        spaceBetween: 18
                     }
                 }}
             >
