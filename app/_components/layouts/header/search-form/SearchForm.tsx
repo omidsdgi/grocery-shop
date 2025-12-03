@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import { searchProducts } from "@/app/_lib/data-service";
 import useDebounce from "@/app/_components/hook/useDebounce";
 
@@ -40,23 +40,19 @@ export default function SearchForm() {
         mutation.mutate(trimmedText);
     };
 
-    const debouncedSearch = useDebounce(() => {
-        if (search_text) {
-            performSearch(search_text);
-        }
-    }, 1000);
-
-    useEffect(() => {
-        if (search_text && search_text.length > 1) {
-            debouncedSearch();
-        } else {
-            setShowResults(false);
-        }
-    }, [search_text,debouncedSearch]);
-
     const onSubmit = (data: FormInput) => {
         performSearch(data.search_text);
     };
+    const debouncedSearchRef = useRef(useDebounce(handleSubmit(onSubmit), 800));
+    useEffect(() => {
+        if (search_text && search_text.length > 1) {
+             debouncedSearchRef.current();
+        } else {
+            setShowResults(false);
+        }
+    }, [search_text]);
+
+
 
     const searchResults = mutation.data || [];
 
