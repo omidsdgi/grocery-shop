@@ -4,45 +4,64 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
-import {searchProducts} from "@/app/_lib/data-service";
+import { useEffect, useState } from "react";
+import { searchProducts } from "@/app/_lib/data-service";
+import useDebounce from "@/app/_components/hook/useDebounce";
 
 interface FormInput {
     search_text: string;
 }
 
-
 export default function SearchForm() {
-    const { register, handleSubmit } = useForm<FormInput>();
+    const { register, handleSubmit, watch } = useForm<FormInput>();
     const [showResults, setShowResults] = useState(false);
+    const search_text = watch('search_text');
 
     const mutation = useMutation({
         mutationFn: searchProducts,
-        onMutate: () => {
-            setShowResults(true);
-        },
         onSuccess: (data) => {
             console.log(`${data.length} محصول یافت شد`);
+            setShowResults(true);
         },
         onError: (error) => {
             console.error('خطا در جستجو:', error);
+            setShowResults(true);
         }
     });
 
-    const onSubmit = (data: FormInput) => {
-        const searchText = data.search_text?.trim();
+    const performSearch = (searchText: string) => {
+        const trimmedText = searchText?.trim();
 
-        if (!searchText) {
+        if (!trimmedText || trimmedText.length <= 1) {
+            setShowResults(false);
             return;
         }
 
-        mutation.mutate(searchText);
+        mutation.mutate(trimmedText);
+    };
+
+    const debouncedSearch = useDebounce(() => {
+        if (search_text) {
+            performSearch(search_text);
+        }
+    }, 1000);
+
+    useEffect(() => {
+        if (search_text && search_text.length > 1) {
+            debouncedSearch();
+        } else {
+            setShowResults(false);
+        }
+    }, [search_text,debouncedSearch]);
+
+    const onSubmit = (data: FormInput) => {
+        performSearch(data.search_text);
     };
 
     const searchResults = mutation.data || [];
 
     return (
-        <div className="relative max-w-[700px] w-full mx-[15px]  lg:block">
+        <div className="relative max-w-[700px] w-full mx-[15px] lg:block">
             <div className="border-2 border-green-150 rounded-[5px]">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
@@ -50,10 +69,10 @@ export default function SearchForm() {
                 >
                     <Input
                         type="text"
-                        {...register("search_text", { required: true })}
+                        autoComplete="off"
+                        {...register("search_text")}
                         placeholder="Search for items"
                         className="text-heading-sm text-gray-500 placeholder:text-gray-400 border-0 w-full h-full p-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                        onChange={() => setShowResults(false)}
                     />
                     <Button
                         type="submit"
@@ -76,7 +95,7 @@ export default function SearchForm() {
             )}
 
             {/* Error state */}
-            {mutation.isError && (
+            {showResults && mutation.isError && (
                 <div className="absolute top-full mt-2 w-full bg-red-50 shadow-lg rounded-md p-4 z-50 border border-red-200">
                     <p className="text-red-600 text-center">
                         خطا در جستجو: {mutation.error?.message || 'خطای ناشناخته'}
@@ -85,7 +104,7 @@ export default function SearchForm() {
             )}
 
             {/* Results */}
-            {showResults && mutation.isSuccess && (
+            {showResults && mutation.isSuccess && !mutation.isPending && (
                 <div className="absolute top-full mt-2 w-full bg-white shadow-lg rounded-md z-50 border max-w-[700px]">
                     {searchResults.length > 0 ? (
                         <div className="max-h-96 overflow-y-auto">
