@@ -8,6 +8,7 @@ import Link from "next/link";
 import ProductSection from "@/app/_components/product/product-section/ProductSection";
 import {getDealsOfTheDay, getProductsByFilter} from "@/app/_lib/data-service";
 import BottomSlider from "@/app/_components/pages/BottomSlider";
+import BestSellerSlider from "@/app/_components/pages/BestSellerSlider";
 
 export default async function Page() {
     const [popularProducts, popularFruits,bestSeller,dealsOfTheDay] = await Promise.all([
@@ -55,7 +56,7 @@ export default async function Page() {
                   <h2 className="text-heading6 md:text-heading5 lg:text-heading4 xl:text-heading3 text-blue-300">Best
                       Sellers </h2>
               </div>
-              <div className="flex flex-col md:flex-row gap-[24px]">
+              <div className="flex gap-[24px]">
                   <div
                       className="bg-[url('/images/bg-leaf.png')] bg-no-repeat bg-bottom bg-[#3BB77E] rounded-[10px] shadow-[20px_20px_40px_0_rgba(24,24,24,0.07)] p-8 xl:p-12 pt-[38px] flex flex-col justify-between xl:max-w-[370px] xl:self-stretch">
                       <h3 className="text-heading2 text-blue-950">Bring nature into your home</h3>
@@ -65,11 +66,12 @@ export default async function Page() {
                           <i className="icon-arrow-small-right text-[24px]"></i>
                       </a>
                   </div>
-                  <ProductSection
-                      products={bestSeller}
-                      showNavigation={false}
-                      slidesPerView={3}
-                  />
+                  <BestSellerSlider sliderData={bestSeller}/>
+              {/*    <ProductSection*/}
+              {/*        products={bestSeller}*/}
+              {/*        showNavigation={false}*/}
+              {/*        slidesPerView={3}*/}
+              {/*    />*/}
               </div>
           </Section>
           <Section>
