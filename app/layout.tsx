@@ -13,6 +13,7 @@ import {Quicksand} from "next/font/google";
 import localfont from "next/font/local"
 import {DarkModeProvider} from "@/app/_components/context/DarkModeContext";
 import QueryProvider from "@/app/_components/providers/QueryProvider";
+import {BasketContextProvider} from "@/app/store/BasketContext";
 
 const quicksand=Quicksand({
     subsets:['latin'],
@@ -57,11 +58,13 @@ export default function RootLayout({children}: Props) {
         <body className={`${quicksand.className},${lato.className}`} suppressHydrationWarning >
         <QueryProvider>
             <DarkModeProvider>
+                <BasketContextProvider>
                 <header>
                     <Header/>
                 </header>
                 <main>{children}</main>
                 <Footer/>
+                </BasketContextProvider>
             </DarkModeProvider>
         </QueryProvider>
         </body>
